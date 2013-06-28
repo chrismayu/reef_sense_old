@@ -1,0 +1,14 @@
+<%= simple_form_for(@arduino) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :reef_tank_id %>
+    <%= f.input :parameter_setup %>
+    <%= f.input :reef_tank_arduino_id %>
+    <%= f.input :arduino_board_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

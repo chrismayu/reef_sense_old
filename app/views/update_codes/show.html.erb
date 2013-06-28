@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @update_code.reef_tank_id %>
+</p>
+
+<p>
+  <b>Reef tank arduino:</b>
+  <%= @update_code.reef_tank_arduino_id %>
+</p>
+
+<p>
+  <b>Sent email:</b>
+  <%= @update_code.sent_email %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @update_code.message %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @update_code.priority %>
+</p>
+
+<p>
+  <b>Display site wide:</b>
+  <%= @update_code.display_site_wide %>
+</p>
+
+
+<%= link_to 'Edit', edit_update_code_path(@update_code) %> |
+<%= link_to 'Back', update_codes_path %>

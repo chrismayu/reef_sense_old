@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @todo_task.reef_tank_id %>
+</p>
+
+<p>
+  <b>List:</b>
+  <%= @todo_task.list_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @todo_task.description %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @todo_task.completed %>
+</p>
+
+
+<%= link_to 'Edit', edit_todo_task_path(@todo_task) %> |
+<%= link_to 'Back', todo_tasks_path %>

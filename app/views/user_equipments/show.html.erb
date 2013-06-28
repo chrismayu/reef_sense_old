@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @user_equipment.reef_tank_id %>
+</p>
+
+<p>
+  <b>Reef tank arduino:</b>
+  <%= @user_equipment.reef_tank_arduino_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @user_equipment.description %>
+</p>
+
+<p>
+  <b>Equipment name:</b>
+  <%= @user_equipment.equipment_name %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @user_equipment.image %>
+</p>
+
+<p>
+  <b>Equipment type:</b>
+  <%= @user_equipment.equipment_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_equipment_path(@user_equipment) %> |
+<%= link_to 'Back', user_equipments_path %>

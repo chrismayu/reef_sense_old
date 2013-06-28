@@ -1,0 +1,25 @@
+<%= simple_form_for(@watcher) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :reef_tank_id %>
+    <%= f.input :params %>
+    <%= f.input :updated_reason %>
+    <%= f.input :reef_tank_arduino_id %>
+    <%= f.input :main_light %>
+    <%= f.input :ato_pump %>
+    <%= f.input :chiller %>
+    <%= f.input :refuge_light %>
+    <%= f.input :skimmer %>
+    <%= f.input :main_pump %>
+    <%= f.input :heater %>
+    <%= f.input :powerhead %>
+    <%= f.input :temp %>
+    <%= f.input :ambeint_temp %>
+    <%= f.input :ph_level %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

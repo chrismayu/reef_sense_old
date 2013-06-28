@@ -1,0 +1,35 @@
+<h1>Listing notifications</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Reef tank arduino</th>
+    <th>Sent email</th>
+    <th>Message2</th>
+    <th>Message</th>
+    <th>Priority</th>
+    <th>Display site wide</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notifications.each do |notification| %>
+  <tr>
+    <td><%= notification.reef_tank_id %></td>
+    <td><%= notification.reef_tank_arduino_id %></td>
+    <td><%= notification.sent_email %></td>
+    <td><%= notification.message2 %></td>
+    <td><%= notification.message %></td>
+    <td><%= notification.priority %></td>
+    <td><%= notification.display_site_wide %></td>
+    <td><%= link_to 'Show', notification %></td>
+    <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
+    <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Notification', new_notification_path %>

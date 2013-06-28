@@ -1,0 +1,27 @@
+<h1>Listing maintainence_logs</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @maintainence_logs.each do |maintainence_log| %>
+  <tr>
+    <td><%= maintainence_log.reef_tank_id %></td>
+    <td><%= maintainence_log.description %></td>
+    <td><%= maintainence_log.amount %></td>
+    <td><%= link_to 'Show', maintainence_log %></td>
+    <td><%= link_to 'Edit', edit_maintainence_log_path(maintainence_log) %></td>
+    <td><%= link_to 'Destroy', maintainence_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Maintainence log', new_maintainence_log_path %>

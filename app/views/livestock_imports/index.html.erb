@@ -1,0 +1,21 @@
+<h1>Listing livestock_imports</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @livestock_imports.each do |livestock_import| %>
+  <tr>
+    <td><%= link_to 'Show', livestock_import %></td>
+    <td><%= link_to 'Edit', edit_livestock_import_path(livestock_import) %></td>
+    <td><%= link_to 'Destroy', livestock_import, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Livestock import', new_livestock_import_path %>

@@ -1,0 +1,33 @@
+<h1>Listing user_livestocks</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Scientific name</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Livestock type</th>
+    <th>Common name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_livestocks.each do |user_livestock| %>
+  <tr>
+    <td><%= user_livestock.reef_tank_id %></td>
+    <td><%= user_livestock.scientific_name %></td>
+    <td><%= user_livestock.description %></td>
+    <td><%= user_livestock.image %></td>
+    <td><%= user_livestock.livestock_type %></td>
+    <td><%= user_livestock.common_name %></td>
+    <td><%= link_to 'Show', user_livestock %></td>
+    <td><%= link_to 'Edit', edit_user_livestock_path(user_livestock) %></td>
+    <td><%= link_to 'Destroy', user_livestock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User livestock', new_user_livestock_path %>

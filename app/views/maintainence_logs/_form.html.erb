@@ -1,0 +1,13 @@
+<%= simple_form_for(@maintainence_log) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :reef_tank_id %>
+    <%= f.input :description %>
+    <%= f.input :amount %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

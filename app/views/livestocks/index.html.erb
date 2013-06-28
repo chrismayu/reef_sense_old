@@ -1,0 +1,31 @@
+<h1>Listing livestocks</h1>
+
+<table>
+  <tr>
+    <th>Scientific name</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Livestock type</th>
+    <th>Common name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @livestocks.each do |livestock| %>
+  <tr>
+    <td><%= livestock.scientific_name %></td>
+    <td><%= livestock.image %></td>
+    <td><%= livestock.description %></td>
+    <td><%= livestock.livestock_type %></td>
+    <td><%= livestock.common_name %></td>
+    <td><%= link_to 'Show', livestock %></td>
+    <td><%= link_to 'Edit', edit_livestock_path(livestock) %></td>
+    <td><%= link_to 'Destroy', livestock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Livestock', new_livestock_path %>

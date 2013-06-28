@@ -1,0 +1,29 @@
+<h1>Listing arduinos</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Parameter setup</th>
+    <th>Reef tank arduino</th>
+    <th>Arduino board type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @arduinos.each do |arduino| %>
+  <tr>
+    <td><%= arduino.reef_tank_id %></td>
+    <td><%= arduino.parameter_setup %></td>
+    <td><%= arduino.reef_tank_arduino_id %></td>
+    <td><%= arduino.arduino_board_type %></td>
+    <td><%= link_to 'Show', arduino %></td>
+    <td><%= link_to 'Edit', edit_arduino_path(arduino) %></td>
+    <td><%= link_to 'Destroy', arduino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Arduino', new_arduino_path %>

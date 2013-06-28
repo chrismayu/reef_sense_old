@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Scientific name:</b>
+  <%= @livestock.scientific_name %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @livestock.image %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @livestock.description %>
+</p>
+
+<p>
+  <b>Livestock type:</b>
+  <%= @livestock.livestock_type %>
+</p>
+
+<p>
+  <b>Common name:</b>
+  <%= @livestock.common_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_livestock_path(@livestock) %> |
+<%= link_to 'Back', livestocks_path %>

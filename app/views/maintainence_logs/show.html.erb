@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @maintainence_log.reef_tank_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @maintainence_log.description %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @maintainence_log.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_maintainence_log_path(@maintainence_log) %> |
+<%= link_to 'Back', maintainence_logs_path %>

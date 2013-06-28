@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @reef_tank.user_id %>
+</p>
+
+<p>
+  <b>Setup date:</b>
+  <%= @reef_tank.setup_date %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @reef_tank.size %>
+</p>
+
+<p>
+  <b>Measurement type:</b>
+  <%= @reef_tank.measurement_type %>
+</p>
+
+<p>
+  <b>Send email okay:</b>
+  <%= @reef_tank.send_email_okay %>
+</p>
+
+
+<%= link_to 'Edit', edit_reef_tank_path(@reef_tank) %> |
+<%= link_to 'Back', reef_tanks_path %>

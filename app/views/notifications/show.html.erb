@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @notification.reef_tank_id %>
+</p>
+
+<p>
+  <b>Reef tank arduino:</b>
+  <%= @notification.reef_tank_arduino_id %>
+</p>
+
+<p>
+  <b>Sent email:</b>
+  <%= @notification.sent_email %>
+</p>
+
+<p>
+  <b>Message2:</b>
+  <%= @notification.message2 %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @notification.message %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= @notification.priority %>
+</p>
+
+<p>
+  <b>Display site wide:</b>
+  <%= @notification.display_site_wide %>
+</p>
+
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

@@ -1,0 +1,29 @@
+<h1>Listing todo_tasks</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>List</th>
+    <th>Description</th>
+    <th>Completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @todo_tasks.each do |todo_task| %>
+  <tr>
+    <td><%= todo_task.reef_tank_id %></td>
+    <td><%= todo_task.list_id %></td>
+    <td><%= todo_task.description %></td>
+    <td><%= todo_task.completed %></td>
+    <td><%= link_to 'Show', todo_task %></td>
+    <td><%= link_to 'Edit', edit_todo_task_path(todo_task) %></td>
+    <td><%= link_to 'Destroy', todo_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Todo task', new_todo_task_path %>

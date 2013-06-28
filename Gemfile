@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.11'
-gem 'sqlite3'
+ 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
+  gem 'jquery-fileupload-rails'
+  gem 'bootstrap-modal-rails'
 end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
@@ -38,4 +41,30 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'launchy'
+end
+
+
+gem "heroku"
+gem "rmagick"
+gem "mini_magick"
+gem "carrierwave"
+gem 'carrierwave_direct'
+gem "bootstrap-switch-rails"
+gem 'country_select'
+gem 'jquery-ui-rails'
+gem "font-awesome-rails"
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+gem 'roo'
+
+group :development, :test do
+
+  gem 'sqlite3'
+
+end
+
+
+group :production do
+  gem 'pg'
+
 end

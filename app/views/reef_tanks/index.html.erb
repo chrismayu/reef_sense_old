@@ -1,0 +1,31 @@
+<h1>Listing reef_tanks</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Setup date</th>
+    <th>Size</th>
+    <th>Measurement type</th>
+    <th>Send email okay</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reef_tanks.each do |reef_tank| %>
+  <tr>
+    <td><%= reef_tank.user_id %></td>
+    <td><%= reef_tank.setup_date %></td>
+    <td><%= reef_tank.size %></td>
+    <td><%= reef_tank.measurement_type %></td>
+    <td><%= reef_tank.send_email_okay %></td>
+    <td><%= link_to 'Show', reef_tank %></td>
+    <td><%= link_to 'Edit', edit_reef_tank_path(reef_tank) %></td>
+    <td><%= link_to 'Destroy', reef_tank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reef tank', new_reef_tank_path %>

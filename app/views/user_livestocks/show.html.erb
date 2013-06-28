@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @user_livestock.reef_tank_id %>
+</p>
+
+<p>
+  <b>Scientific name:</b>
+  <%= @user_livestock.scientific_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @user_livestock.description %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @user_livestock.image %>
+</p>
+
+<p>
+  <b>Livestock type:</b>
+  <%= @user_livestock.livestock_type %>
+</p>
+
+<p>
+  <b>Common name:</b>
+  <%= @user_livestock.common_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_livestock_path(@user_livestock) %> |
+<%= link_to 'Back', user_livestocks_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reef tank:</b>
+  <%= @arduino.reef_tank_id %>
+</p>
+
+<p>
+  <b>Parameter setup:</b>
+  <%= @arduino.parameter_setup %>
+</p>
+
+<p>
+  <b>Reef tank arduino:</b>
+  <%= @arduino.reef_tank_arduino_id %>
+</p>
+
+<p>
+  <b>Arduino board type:</b>
+  <%= @arduino.arduino_board_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_arduino_path(@arduino) %> |
+<%= link_to 'Back', arduinos_path %>

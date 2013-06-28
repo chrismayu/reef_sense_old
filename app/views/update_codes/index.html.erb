@@ -1,0 +1,33 @@
+<h1>Listing update_codes</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Reef tank arduino</th>
+    <th>Sent email</th>
+    <th>Message</th>
+    <th>Priority</th>
+    <th>Display site wide</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @update_codes.each do |update_code| %>
+  <tr>
+    <td><%= update_code.reef_tank_id %></td>
+    <td><%= update_code.reef_tank_arduino_id %></td>
+    <td><%= update_code.sent_email %></td>
+    <td><%= update_code.message %></td>
+    <td><%= update_code.priority %></td>
+    <td><%= update_code.display_site_wide %></td>
+    <td><%= link_to 'Show', update_code %></td>
+    <td><%= link_to 'Edit', edit_update_code_path(update_code) %></td>
+    <td><%= link_to 'Destroy', update_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Update code', new_update_code_path %>

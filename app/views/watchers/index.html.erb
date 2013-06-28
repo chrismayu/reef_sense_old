@@ -1,0 +1,51 @@
+<h1>Listing watchers</h1>
+
+<table>
+  <tr>
+    <th>Reef tank</th>
+    <th>Params</th>
+    <th>Updated reason</th>
+    <th>Reef tank arduino</th>
+    <th>Main light</th>
+    <th>Ato pump</th>
+    <th>Chiller</th>
+    <th>Refuge light</th>
+    <th>Skimmer</th>
+    <th>Main pump</th>
+    <th>Heater</th>
+    <th>Powerhead</th>
+    <th>Temp</th>
+    <th>Ambeint temp</th>
+    <th>Ph level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @watchers.each do |watcher| %>
+  <tr>
+    <td><%= watcher.reef_tank_id %></td>
+    <td><%= watcher.params %></td>
+    <td><%= watcher.updated_reason %></td>
+    <td><%= watcher.reef_tank_arduino_id %></td>
+    <td><%= watcher.main_light %></td>
+    <td><%= watcher.ato_pump %></td>
+    <td><%= watcher.chiller %></td>
+    <td><%= watcher.refuge_light %></td>
+    <td><%= watcher.skimmer %></td>
+    <td><%= watcher.main_pump %></td>
+    <td><%= watcher.heater %></td>
+    <td><%= watcher.powerhead %></td>
+    <td><%= watcher.temp %></td>
+    <td><%= watcher.ambeint_temp %></td>
+    <td><%= watcher.ph_level %></td>
+    <td><%= link_to 'Show', watcher %></td>
+    <td><%= link_to 'Edit', edit_watcher_path(watcher) %></td>
+    <td><%= link_to 'Destroy', watcher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Watcher', new_watcher_path %>
