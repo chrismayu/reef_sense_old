@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Notification -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Reef tank:</b>
-  <%= @notification.reef_tank_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_id) %>:</strong></dt>
+  <dd><%= @notification.reef_tank_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_arduino_id) %>:</strong></dt>
+  <dd><%= @notification.reef_tank_arduino_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sent_email) %>:</strong></dt>
+  <dd><%= @notification.sent_email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:message2) %>:</strong></dt>
+  <dd><%= @notification.message2 %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:message) %>:</strong></dt>
+  <dd><%= @notification.message %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:priority) %>:</strong></dt>
+  <dd><%= @notification.priority %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:display_site_wide) %>:</strong></dt>
+  <dd><%= @notification.display_site_wide %></dd>
+</dl>
 
-<p>
-  <b>Reef tank arduino:</b>
-  <%= @notification.reef_tank_arduino_id %>
-</p>
-
-<p>
-  <b>Sent email:</b>
-  <%= @notification.sent_email %>
-</p>
-
-<p>
-  <b>Message2:</b>
-  <%= @notification.message2 %>
-</p>
-
-<p>
-  <b>Message:</b>
-  <%= @notification.message %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @notification.priority %>
-</p>
-
-<p>
-  <b>Display site wide:</b>
-  <%= @notification.display_site_wide %>
-</p>
-
-
-<%= link_to 'Edit', edit_notification_path(@notification) %> |
-<%= link_to 'Back', notifications_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              notifications_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_notification_path(@notification), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              notification_path(@notification),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

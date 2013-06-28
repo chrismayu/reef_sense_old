@@ -24,7 +24,7 @@ class ReefTanksController < ApplicationController
   # GET /reef_tanks/new
   # GET /reef_tanks/new.json
   def new
-    @reef_tank = ReefTank.new
+    @reef_tank = ReefTank.new(:user_id => params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

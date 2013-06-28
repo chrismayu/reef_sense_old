@@ -1,27 +1,40 @@
-<h1>Listing maintainence_logs</h1>
-
-<table>
-  <tr>
-    <th>Reef tank</th>
-    <th>Description</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @maintainence_logs.each do |maintainence_log| %>
-  <tr>
-    <td><%= maintainence_log.reef_tank_id %></td>
-    <td><%= maintainence_log.description %></td>
-    <td><%= maintainence_log.amount %></td>
-    <td><%= link_to 'Show', maintainence_log %></td>
-    <td><%= link_to 'Edit', edit_maintainence_log_path(maintainence_log) %></td>
-    <td><%= link_to 'Destroy', maintainence_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = MaintainenceLog -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_id) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @maintainence_logs.each do |maintainence_log| %>
+      <tr>
+        <td><%= link_to maintainence_log.id, maintainence_log_path(maintainence_log) %></td>
+        <td><%= maintainence_log.reef_tank_id %></td>
+        <td><%= maintainence_log.description %></td>
+        <td><%= maintainence_log.amount %></td>
+        <td><%=l maintainence_log.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_maintainence_log_path(maintainence_log), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      maintainence_log_path(maintainence_log),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Maintainence log', new_maintainence_log_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_maintainence_log_path,
+            :class => 'btn btn-primary' %>

@@ -1,33 +1,46 @@
-<h1>Listing user_livestocks</h1>
-
-<table>
-  <tr>
-    <th>Reef tank</th>
-    <th>Scientific name</th>
-    <th>Description</th>
-    <th>Image</th>
-    <th>Livestock type</th>
-    <th>Common name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @user_livestocks.each do |user_livestock| %>
-  <tr>
-    <td><%= user_livestock.reef_tank_id %></td>
-    <td><%= user_livestock.scientific_name %></td>
-    <td><%= user_livestock.description %></td>
-    <td><%= user_livestock.image %></td>
-    <td><%= user_livestock.livestock_type %></td>
-    <td><%= user_livestock.common_name %></td>
-    <td><%= link_to 'Show', user_livestock %></td>
-    <td><%= link_to 'Edit', edit_user_livestock_path(user_livestock) %></td>
-    <td><%= link_to 'Destroy', user_livestock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = UserLivestock -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_id) %></th>
+      <th><%= model_class.human_attribute_name(:scientific_name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:livestock_type) %></th>
+      <th><%= model_class.human_attribute_name(:common_name) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_livestocks.each do |user_livestock| %>
+      <tr>
+        <td><%= link_to user_livestock.id, user_livestock_path(user_livestock) %></td>
+        <td><%= user_livestock.reef_tank_id %></td>
+        <td><%= user_livestock.scientific_name %></td>
+        <td><%= user_livestock.description %></td>
+        <td><%= user_livestock.image %></td>
+        <td><%= user_livestock.livestock_type %></td>
+        <td><%= user_livestock.common_name %></td>
+        <td><%=l user_livestock.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_livestock_path(user_livestock), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      user_livestock_path(user_livestock),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New User livestock', new_user_livestock_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_livestock_path,
+            :class => 'btn btn-primary' %>

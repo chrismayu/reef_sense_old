@@ -1,14 +1,11 @@
-<%= simple_form_for(@arduino) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :reef_tank_id %>
-    <%= f.input :parameter_setup %>
-    <%= f.input :reef_tank_arduino_id %>
-    <%= f.input :arduino_board_type %>
-  </div>
-
+<%= simple_form_for @arduino, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :reef_tank_id %>
+  <%= f.input :parameter_setup %>
+  <%= f.input :reef_tank_arduino_id %>
+  <%= f.input :arduino_board_type %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                arduinos_path, :class => 'btn' %>
   </div>
 <% end %>

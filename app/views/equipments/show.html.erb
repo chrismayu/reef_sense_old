@@ -1,24 +1,26 @@
-<%- model_class = MaintainenceLog -%>
+<%- model_class = Equipment -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:reef_tank_id) %>:</strong></dt>
-  <dd><%= @maintainence_log.reef_tank_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @maintainence_log.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
-  <dd><%= @maintainence_log.amount %></dd>
+  <dd><%= @equipment.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:equipment_name) %>:</strong></dt>
+  <dd><%= @equipment.equipment_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
+  <dd><%= @equipment.image %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:equipment_type) %>:</strong></dt>
+  <dd><%= @equipment.equipment_type %></dd>
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              maintainence_logs_path, :class => 'btn'  %>
+              equipments_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_maintainence_log_path(@maintainence_log), :class => 'btn' %>
+              edit_equipment_path(@equipment), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              maintainence_log_path(@maintainence_log),
+              equipment_path(@equipment),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

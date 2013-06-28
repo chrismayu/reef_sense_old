@@ -1,16 +1,13 @@
-<%= simple_form_for(@user_equipment) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :reef_tank_id %>
-    <%= f.input :reef_tank_arduino_id %>
-    <%= f.input :description %>
-    <%= f.input :equipment_name %>
-    <%= f.input :image %>
-    <%= f.input :equipment_type %>
-  </div>
-
+<%= simple_form_for @user_equipment, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :reef_tank_id %>
+  <%= f.input :reef_tank_arduino_id %>
+  <%= f.input :description %>
+  <%= f.input :equipment_name %>
+  <%= f.input :image %>
+  <%= f.input :equipment_type %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                user_equipments_path, :class => 'btn' %>
   </div>
 <% end %>

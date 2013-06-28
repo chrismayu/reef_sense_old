@@ -1,35 +1,48 @@
-<h1>Listing notifications</h1>
-
-<table>
-  <tr>
-    <th>Reef tank</th>
-    <th>Reef tank arduino</th>
-    <th>Sent email</th>
-    <th>Message2</th>
-    <th>Message</th>
-    <th>Priority</th>
-    <th>Display site wide</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @notifications.each do |notification| %>
-  <tr>
-    <td><%= notification.reef_tank_id %></td>
-    <td><%= notification.reef_tank_arduino_id %></td>
-    <td><%= notification.sent_email %></td>
-    <td><%= notification.message2 %></td>
-    <td><%= notification.message %></td>
-    <td><%= notification.priority %></td>
-    <td><%= notification.display_site_wide %></td>
-    <td><%= link_to 'Show', notification %></td>
-    <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
-    <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Notification -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_id) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_arduino_id) %></th>
+      <th><%= model_class.human_attribute_name(:sent_email) %></th>
+      <th><%= model_class.human_attribute_name(:message2) %></th>
+      <th><%= model_class.human_attribute_name(:message) %></th>
+      <th><%= model_class.human_attribute_name(:priority) %></th>
+      <th><%= model_class.human_attribute_name(:display_site_wide) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notifications.each do |notification| %>
+      <tr>
+        <td><%= link_to notification.id, notification_path(notification) %></td>
+        <td><%= notification.reef_tank_id %></td>
+        <td><%= notification.reef_tank_arduino_id %></td>
+        <td><%= notification.sent_email %></td>
+        <td><%= notification.message2 %></td>
+        <td><%= notification.message %></td>
+        <td><%= notification.priority %></td>
+        <td><%= notification.display_site_wide %></td>
+        <td><%=l notification.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_notification_path(notification), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      notification_path(notification),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Notification', new_notification_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_notification_path,
+            :class => 'btn btn-primary' %>

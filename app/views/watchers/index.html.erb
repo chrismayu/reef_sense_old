@@ -1,51 +1,64 @@
-<h1>Listing watchers</h1>
-
-<table>
-  <tr>
-    <th>Reef tank</th>
-    <th>Params</th>
-    <th>Updated reason</th>
-    <th>Reef tank arduino</th>
-    <th>Main light</th>
-    <th>Ato pump</th>
-    <th>Chiller</th>
-    <th>Refuge light</th>
-    <th>Skimmer</th>
-    <th>Main pump</th>
-    <th>Heater</th>
-    <th>Powerhead</th>
-    <th>Temp</th>
-    <th>Ambeint temp</th>
-    <th>Ph level</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @watchers.each do |watcher| %>
-  <tr>
-    <td><%= watcher.reef_tank_id %></td>
-    <td><%= watcher.params %></td>
-    <td><%= watcher.updated_reason %></td>
-    <td><%= watcher.reef_tank_arduino_id %></td>
-    <td><%= watcher.main_light %></td>
-    <td><%= watcher.ato_pump %></td>
-    <td><%= watcher.chiller %></td>
-    <td><%= watcher.refuge_light %></td>
-    <td><%= watcher.skimmer %></td>
-    <td><%= watcher.main_pump %></td>
-    <td><%= watcher.heater %></td>
-    <td><%= watcher.powerhead %></td>
-    <td><%= watcher.temp %></td>
-    <td><%= watcher.ambeint_temp %></td>
-    <td><%= watcher.ph_level %></td>
-    <td><%= link_to 'Show', watcher %></td>
-    <td><%= link_to 'Edit', edit_watcher_path(watcher) %></td>
-    <td><%= link_to 'Destroy', watcher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Watcher -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_id) %></th>
+      <th><%= model_class.human_attribute_name(:params) %></th>
+      <th><%= model_class.human_attribute_name(:updated_reason) %></th>
+      <th><%= model_class.human_attribute_name(:reef_tank_arduino_id) %></th>
+      <th><%= model_class.human_attribute_name(:main_light) %></th>
+      <th><%= model_class.human_attribute_name(:ato_pump) %></th>
+      <th><%= model_class.human_attribute_name(:chiller) %></th>
+      <th><%= model_class.human_attribute_name(:refuge_light) %></th>
+      <th><%= model_class.human_attribute_name(:skimmer) %></th>
+      <th><%= model_class.human_attribute_name(:main_pump) %></th>
+      <th><%= model_class.human_attribute_name(:heater) %></th>
+      <th><%= model_class.human_attribute_name(:powerhead) %></th>
+      <th><%= model_class.human_attribute_name(:temp) %></th>
+      <th><%= model_class.human_attribute_name(:ambeint_temp) %></th>
+      <th><%= model_class.human_attribute_name(:ph_level) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @watchers.each do |watcher| %>
+      <tr>
+        <td><%= link_to watcher.id, watcher_path(watcher) %></td>
+        <td><%= watcher.reef_tank_id %></td>
+        <td><%= watcher.params %></td>
+        <td><%= watcher.updated_reason %></td>
+        <td><%= watcher.reef_tank_arduino_id %></td>
+        <td><%= watcher.main_light %></td>
+        <td><%= watcher.ato_pump %></td>
+        <td><%= watcher.chiller %></td>
+        <td><%= watcher.refuge_light %></td>
+        <td><%= watcher.skimmer %></td>
+        <td><%= watcher.main_pump %></td>
+        <td><%= watcher.heater %></td>
+        <td><%= watcher.powerhead %></td>
+        <td><%= watcher.temp %></td>
+        <td><%= watcher.ambeint_temp %></td>
+        <td><%= watcher.ph_level %></td>
+        <td><%=l watcher.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_watcher_path(watcher), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      watcher_path(watcher),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Watcher', new_watcher_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_watcher_path,
+            :class => 'btn btn-primary' %>

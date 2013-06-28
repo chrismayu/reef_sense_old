@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = UpdateCode -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Reef tank:</b>
-  <%= @update_code.reef_tank_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_id) %>:</strong></dt>
+  <dd><%= @update_code.reef_tank_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_arduino_id) %>:</strong></dt>
+  <dd><%= @update_code.reef_tank_arduino_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sent_email) %>:</strong></dt>
+  <dd><%= @update_code.sent_email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:message) %>:</strong></dt>
+  <dd><%= @update_code.message %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:priority) %>:</strong></dt>
+  <dd><%= @update_code.priority %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:display_site_wide) %>:</strong></dt>
+  <dd><%= @update_code.display_site_wide %></dd>
+</dl>
 
-<p>
-  <b>Reef tank arduino:</b>
-  <%= @update_code.reef_tank_arduino_id %>
-</p>
-
-<p>
-  <b>Sent email:</b>
-  <%= @update_code.sent_email %>
-</p>
-
-<p>
-  <b>Message:</b>
-  <%= @update_code.message %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @update_code.priority %>
-</p>
-
-<p>
-  <b>Display site wide:</b>
-  <%= @update_code.display_site_wide %>
-</p>
-
-
-<%= link_to 'Edit', edit_update_code_path(@update_code) %> |
-<%= link_to 'Back', update_codes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              update_codes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_update_code_path(@update_code), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              update_code_path(@update_code),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = UserLivestock -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Reef tank:</b>
-  <%= @user_livestock.reef_tank_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_id) %>:</strong></dt>
+  <dd><%= @user_livestock.reef_tank_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:scientific_name) %>:</strong></dt>
+  <dd><%= @user_livestock.scientific_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @user_livestock.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
+  <dd><%= @user_livestock.image %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:livestock_type) %>:</strong></dt>
+  <dd><%= @user_livestock.livestock_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:common_name) %>:</strong></dt>
+  <dd><%= @user_livestock.common_name %></dd>
+</dl>
 
-<p>
-  <b>Scientific name:</b>
-  <%= @user_livestock.scientific_name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @user_livestock.description %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @user_livestock.image %>
-</p>
-
-<p>
-  <b>Livestock type:</b>
-  <%= @user_livestock.livestock_type %>
-</p>
-
-<p>
-  <b>Common name:</b>
-  <%= @user_livestock.common_name %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_livestock_path(@user_livestock) %> |
-<%= link_to 'Back', user_livestocks_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              user_livestocks_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_user_livestock_path(@user_livestock), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_livestock_path(@user_livestock),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
