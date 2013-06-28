@@ -40,5 +40,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_reef_tank_path,
+            new_reef_tank_path(:user_id => @user),
             :class => 'btn btn-primary' %>

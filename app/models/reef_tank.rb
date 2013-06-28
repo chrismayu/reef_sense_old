@@ -3,6 +3,8 @@ class ReefTank < ActiveRecord::Base
   
   belongs_to :user
   
+  validates :user_id, presence: true
+  
   has_many :todo_lists
   has_many :watchers
   has_many :arduinos

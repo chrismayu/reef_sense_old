@@ -1,6 +1,7 @@
 <%= simple_form_for @reef_tank, :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.input :user_id, :as => :hidden %>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id   } %>
+ 
   <%= f.input :setup_date %>
   <%= f.input :size %>
   <%= f.input :measurement_type %>

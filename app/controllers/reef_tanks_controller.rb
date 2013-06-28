@@ -3,7 +3,7 @@ class ReefTanksController < ApplicationController
   # GET /reef_tanks.json
   def index
     @reef_tanks = ReefTank.all
-
+    @user = current_user.id
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reef_tanks }
@@ -26,6 +26,7 @@ class ReefTanksController < ApplicationController
   def new
     @reef_tank = ReefTank.new(:user_id => params[:user_id])
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @reef_tank }
@@ -41,6 +42,8 @@ class ReefTanksController < ApplicationController
   # POST /reef_tanks.json
   def create
     @reef_tank = ReefTank.new(params[:reef_tank])
+   # @reef_tank  = @user.reef_tanks.build(params[:reef_tank])
+    
 
     respond_to do |format|
       if @reef_tank.save
