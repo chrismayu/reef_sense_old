@@ -1,9 +1,16 @@
 class ReefTanksController < ApplicationController
   # GET /reef_tanks
   # GET /reef_tanks.json
+  
+  before_filter :authenticate_user! 
+  
+  
   def index
-    @reef_tanks = ReefTank.all
     @user = current_user.id
+    @reef_tanks = ReefTank.where(:user_id => @user)
+    
+  
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reef_tanks }
@@ -24,6 +31,7 @@ class ReefTanksController < ApplicationController
   # GET /reef_tanks/new
   # GET /reef_tanks/new.json
   def new
+  
     @reef_tank = ReefTank.new(:user_id => params[:user_id])
 
 
