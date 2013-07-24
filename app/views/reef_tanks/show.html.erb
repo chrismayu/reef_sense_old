@@ -27,3 +27,8 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_arduino_path(:reef_tank_id => @reef_tank),
+            :class => 'btn btn-primary' %>
