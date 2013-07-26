@@ -58,7 +58,7 @@
     <% end %>
   </tbody>
 </table>
+ 
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_watcher_path,
-            :class => 'btn btn-primary' %>
+			<%= debug @arduinos  if Rails.env.development?%>
+			<%= debug(params) if Rails.env.development? %>

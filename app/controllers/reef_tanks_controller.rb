@@ -8,7 +8,7 @@ class ReefTanksController < ApplicationController
   def index
     @user = current_user.id
     @reef_tanks = ReefTank.where(:user_id => @user)
-    
+    @watchers = Watcher.all
   
     
     respond_to do |format|
@@ -21,7 +21,8 @@ class ReefTanksController < ApplicationController
   # GET /reef_tanks/1.json
   def show
     @reef_tank = ReefTank.find(params[:id])
-
+     @watchers = Watcher.all
+     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @reef_tank }

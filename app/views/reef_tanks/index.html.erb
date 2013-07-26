@@ -39,6 +39,9 @@
   </tbody>
 </table>
 
+<%= debug @reef_tanks %>
+<%= debug(params) if Rails.env.development? %>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_reef_tank_path(:user_id => @user),
             :class => 'btn btn-primary' %>

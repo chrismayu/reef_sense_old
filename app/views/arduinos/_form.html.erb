@@ -1,6 +1,6 @@
 <%= simple_form_for @arduino, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :reef_tank_id %>
-  <%= f.input :parameter_setup %>
+  <%= f.input :parameter_setup, :input_html => { :class => "enroll_input span4", :rows => 2}  %>
   <%= f.input :reef_tank_arduino_id %>
   <%= f.input :arduino_board_type %>
   <div class="form-actions">

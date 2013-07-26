@@ -3,6 +3,11 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+
+ 
+ 
+<%= render :partial => 'current_status' , :reef_tank => @reef_tank %>
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @reef_tank.user_id %></dd>
@@ -14,6 +19,8 @@
   <dd><%= @reef_tank.measurement_type %></dd>
   <dt><strong><%= model_class.human_attribute_name(:send_email_okay) %>:</strong></dt>
   <dd><%= @reef_tank.send_email_okay %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_arduino_id) %>:</strong></dt>
+  <dd><%= @reef_tank.reef_tank_arduino_id %></dd>
 </dl>
 
 <div class="form-actions">
@@ -28,7 +35,7 @@
               :class => 'btn btn-danger' %>
 </div>
 
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_arduino_path(:reef_tank_id => @reef_tank),
-            :class => 'btn btn-primary' %>
+<%= debug @subcomment if Rails.env.development? %>
+<%= debug @reef_tank if Rails.env.development? %>
+<%= debug @watchers if Rails.env.development? %>
+<%= debug(params) if Rails.env.development? %>

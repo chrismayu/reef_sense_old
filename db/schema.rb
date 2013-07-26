@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628164057) do
+ActiveRecord::Schema.define(:version => 20130728163955) do
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -71,9 +71,13 @@ ActiveRecord::Schema.define(:version => 20130628164057) do
     t.date     "setup_date"
     t.integer  "size"
     t.string   "measurement_type"
-    t.boolean  "send_email_okay",  :null => false
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.boolean  "send_email_okay",      :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "reef_tank_id"
+    t.text     "parameter_setup"
+    t.string   "reef_tank_arduino_id"
+    t.string   "arduino_board_type"
   end
 
   create_table "roles", :force => true do |t|
@@ -168,14 +172,14 @@ ActiveRecord::Schema.define(:version => 20130628164057) do
     t.text     "params"
     t.integer  "updated_reason"
     t.string   "reef_tank_arduino_id"
-    t.boolean  "main_light",                                         :null => false
-    t.boolean  "ato_pump",                                           :null => false
-    t.boolean  "chiller",                                            :null => false
-    t.boolean  "refuge_light",                                       :null => false
-    t.boolean  "skimmer",                                            :null => false
-    t.boolean  "main_pump",                                          :null => false
-    t.boolean  "heater",                                             :null => false
-    t.boolean  "powerhead",                                          :null => false
+    t.boolean  "main_light"
+    t.boolean  "ato_pump"
+    t.boolean  "chiller"
+    t.boolean  "refuge_light"
+    t.boolean  "skimmer"
+    t.boolean  "main_pump"
+    t.boolean  "heater"
+    t.boolean  "powerhead"
     t.decimal  "temp",                 :precision => 8, :scale => 2
     t.decimal  "ambeint_temp",         :precision => 8, :scale => 2
     t.integer  "ph_level"

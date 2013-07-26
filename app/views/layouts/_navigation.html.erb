@@ -4,6 +4,10 @@
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
+
+	<li>
+    <%= link_to 'RTD', watchers_path(@reef_tank)  %>
+    </li>
   <% else %>
     <li>
     <%= link_to 'Login', new_user_session_path %>
