@@ -3,6 +3,9 @@ class ArduinosController < ApplicationController
   # GET /arduinos.json
   def index
     @arduinos = Arduino.all
+     # @user = current_user.id
+     # @arduinos = Arduino.where(:reef_tank_id => @user) #(:reef_tank_id => params[:reef_tank_id])
+     
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +27,8 @@ class ArduinosController < ApplicationController
   # GET /arduinos/new
   # GET /arduinos/new.json
   def new
-    @arduino = Arduino.new
+    @arduino = Arduino.new(:reef_tank_id => params[:reef_tank_id])
+    # @reef_tank = ReefTank.new(:reef_tank_id => params[:reef_tank_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +44,12 @@ class ArduinosController < ApplicationController
   # POST /arduinos
   # POST /arduinos.json
   def create
+    #@reef_tank = ReefTank.new(params[:reef_tank])
     @arduino = Arduino.new(params[:arduino])
 
     respond_to do |format|
       if @arduino.save
-        format.html { redirect_to @arduino, notice: 'Arduino was successfully created.' }
+        format.html { redirect_to @arduino, notice: 'A Arduino System was successfully created.' }
         format.json { render json: @arduino, status: :created, location: @arduino }
       else
         format.html { render action: "new" }

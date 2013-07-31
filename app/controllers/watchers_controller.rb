@@ -1,8 +1,29 @@
 class WatchersController < ApplicationController
   # GET /watchers
   # GET /watchers.json
+  
+     
+  # has_many :alarm_codes, :foreign_key => :tank_name, :primary_key =>  :temp_name
+
+  #default_scope order: 'watchers.created_at DESC'
+  
+   protect_from_forgery :except => [:create]
+
+    def create
+      #:reef_tank_arduino_id =>  params[:t_n]
+   # @ardunios = Ardunio.where(:reef_tank_arduino_id => params[:t_n])
+      
+      Watcher.create!(:params => params, :temp => params[:m_t],  :skimmer => params[:skim], :updated_reason => params[:h_c], :reef_tank_arduino_id => params[:t_n], :main_light => params[:daylight], :powerhead => params[:ph], :ambeint_temp => params[:a_t], :main_pump => params[:m_p], :ato_pump => params[:ato], :heater => params[:h]
+      )
+     render :nothing => true
+ 
+    end
+  
+  
   def index
-    @watchers = Watcher.all
+   @watchers = Watcher.all
+     #   @watchers = Watcher.where(:reef_tank_arduino_id => @reef_tank)
+    #@watchers = Watcher.paginate(page: params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,22 +57,7 @@ class WatchersController < ApplicationController
   def edit
     @watcher = Watcher.find(params[:id])
   end
-
-  # POST /watchers
-  # POST /watchers.json
-  def create
-    @watcher = Watcher.new(params[:watcher])
-
-    respond_to do |format|
-      if @watcher.save
-        format.html { redirect_to @watcher, notice: 'Watcher was successfully created.' }
-        format.json { render json: @watcher, status: :created, location: @watcher }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @watcher.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+ 
 
   # PUT /watchers/1
   # PUT /watchers/1.json
