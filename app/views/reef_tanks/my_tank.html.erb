@@ -98,19 +98,19 @@
          <p>	<table class="table table-striped">
 			  <tbody>
 			    <tr>
-					<td>ATO Pump</td>
-				      <td><% if @current_status.ato_pump  == true %>
-							    <span class="label label-success">ON</span>
+					<td>Water Level</td>
+				      <td><% if @current_status.waterlevelokay == true %>
+							    <span class="label label-success">Okay</span>
 								<%else%>	
-								<span class="label label-warning">OFF</span>
+								<span class="label label-warning">Water Level low</span>
 								<%end%>
 
 								</td>
 
 				     </tr>
 					<tr>
-						<td>Pump</td>
-					      <td><% if @current_status.main_pump  == true %>
+						<td>ATO Pump</td>
+					      <td><% if @current_status.ato_pump  == true %>
 								    <span class="label label-success">ON</span>
 									<%else%>	
 									<span class="label label-warning">OFF</span>

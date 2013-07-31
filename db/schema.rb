@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728163955) do
+ActiveRecord::Schema.define(:version => 20130731160506) do
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -185,6 +185,8 @@ ActiveRecord::Schema.define(:version => 20130728163955) do
     t.integer  "ph_level"
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
+    t.boolean  "waterlevelokay"
+    t.boolean  "startingup"
   end
 
 end
