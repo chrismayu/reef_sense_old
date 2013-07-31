@@ -2,28 +2,125 @@
 
 <!-- Jumbotron -->
      <div class="jumbotron">
-       <h1>Marketing stuff!</h1>
-       <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-       <a class="btn btn-large btn-success" href="#">Get started today</a>
+       <h1>Reef Sense</h1>
+       <p class="lead">Real Time Data, Alarm Notification and continually real time monitoring </p>
+       <a class="btn btn-large btn-success" href="#">Check out the Real Time Data</a>
      </div>
 
      <hr>
+<% @current_status = @reef_tank.watchers.order("created_at").first %>
+
 
      <!-- Example row of columns -->
      <div class="row-fluid">
        <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+         <h2>Real Time Data</h2>
+         <p>  
+	
+	
+	
+			<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>Temp</td>
+				      <td><% if (@current_status != nil) then %>
+					  <%= @current_status.temp %>
+					<% else %>
+					<% end %>
+
+								</td>
+
+				     </tr>
+					<tr>
+						<td>Last Updated</td>
+					      <td>	<% if (@current_status != nil) then %>
+								 <%= time_ago_in_words(@current_status.created_at) %>  ago  
+							<% else %>
+							<% end %>
+
+									</td>
+					     </tr>
+					
+						 <tr>
+								<td>Heater</td>
+							      <td>
+							<% if @current_status.heater  == true %>
+										    <span class="label label-success">ON</span>
+											<%else%>	
+											<span class="label label-warning">OFF</span>
+											<%end%>
+
+											</td>
+
+							     </tr>
+
+	  </tbody>
+	</table>
+	
+	</p>
          <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
        <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+         <h2>Pump Status</h2>
+         <p> 
+			<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>PowerHead</td>
+				      <td><% if @current_status.powerhead  == true %>
+							    <span class="label label-success">ON</span>
+								<%else%>	
+								<span class="label label-warning">OFF</span>
+								<%end%>
+								
+								</td>
+			 
+				     </tr>
+					<tr>
+						<td>Pump</td>
+					      <td><% if @current_status.main_pump  == true %>
+								    <span class="label label-success">ON</span>
+									<%else%>	
+									<span class="label label-warning">OFF</span>
+									<%end%>
+
+									</td>
+					     </tr>
+	    
+	  </tbody>
+	</table>
+	
+	 </p>
          <p><a class="btn" href="#">View details &raquo;</a></p>
       </div>
        <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+         <h2>Water Level</h2>
+         <p>	<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>ATO Pump</td>
+				      <td><% if @current_status.ato_pump  == true %>
+							    <span class="label label-success">ON</span>
+								<%else%>	
+								<span class="label label-warning">OFF</span>
+								<%end%>
+
+								</td>
+
+				     </tr>
+					<tr>
+						<td>Pump</td>
+					      <td><% if @current_status.main_pump  == true %>
+								    <span class="label label-success">ON</span>
+									<%else%>	
+									<span class="label label-warning">OFF</span>
+									<%end%>
+
+									</td>
+					     </tr>
+
+	  </tbody>
+	</table></p>
          <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
      </div>
@@ -31,7 +128,7 @@
      <hr>
 
      <div class="footer">
-       <p>&copy; Company 2013</p>
+       <p>&copy; ReefSense 2013</p>
      </div>
 
 

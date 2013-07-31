@@ -2,9 +2,26 @@
 
 <table class="table table-striped">
   <thead>
-<tr style="border-top: 1px solid #eee; padding-top: 5px; margin-top: 5px">
+<tr style="border-top: 0px solid #eee; padding-top: 5px; margin-top: 5px">
+	
+	<strong></strong>
+	
+	<div class="fancy-date">
+		Last Updated:
+		<% if (@current_status != nil) then %>
+			 <%= time_ago_in_words(@current_status.created_at) %>  ago  
+		<% else %>
+		<% end %>	
+	 </div>	
+
+	 </td>
+
+	</tr>
+	<tr>
   <td class="fancy-date ">
-  <div class="fancy-weekday">
+	
+	
+  <div class="fancy-weekday, fancy-date ">
 	
  Temp
 </div>
@@ -16,14 +33,9 @@
        
  </div>
  </td>
-<td class="fancy-date ">
-	Last Updated:
-	<% if (@current_status != nil) then %>
-		 <%= time_ago_in_words(@current_status.created_at) %>  ago  
-	<% else %>
-	<% end %>
-</td>
-     </tr>                              
+
+</tr>
+                             
 
 </thead>
 </table>
