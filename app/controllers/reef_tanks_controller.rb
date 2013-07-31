@@ -5,10 +5,25 @@ class ReefTanksController < ApplicationController
   before_filter :authenticate_user! 
   
   
+  def my_tank
+     @user = current_user.id
+      @reef_tank = ReefTank.where(:user_id => @user).last 
+ 
+   
+     respond_to do |format|
+       format.html # index.html.erb
+       format.json { render json: @reef_tanks }
+     end
+    
+    
+    
+  end
+  
+  
+  
   def index
     @user = current_user.id
     @reef_tanks = ReefTank.where(:user_id => @user)
-    @watchers = Watcher.all
   
     
     respond_to do |format|

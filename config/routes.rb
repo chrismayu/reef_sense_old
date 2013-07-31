@@ -19,13 +19,17 @@ ReefSense::Application.routes.draw do
 
   resources :livestock_imports
 
-
+  get "reef_tanks/my_tank"
   resources :reef_tanks
-  root :to => "reef_tanks#index"
+ # root :to => "reef_tanks#index"
+  root :to => "reef_tanks#my_tank"
 
    authenticated :user do
-    root :to => "reef_tanks#index"
+    #root :to => "reef_tanks#index"
+    root :to => "reef_tanks#my_tank"
    end
+
+
 
 
   resources :maintainence_logs
