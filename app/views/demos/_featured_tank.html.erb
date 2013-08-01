@@ -129,8 +129,7 @@
 <table class="table table-striped">
 	<caption><h5>Recent Received Data:</h5></caption>
   <thead>
-    <tr> <th>Code:</th>
-      
+    <tr> 
       <th>Temp</th>
  
       <th>House Temp</th>
@@ -149,18 +148,7 @@
     <% @watchers.each do |watcher| %>
   
       <tr>
-	  	<td><% for update_code in watcher.update_codes %>
-				<% if watcher.updated_reason == update_code.reef_tank_id %>
-						   <%= update_code.message %>
-
-							<%end%>
-
-		  <% end %>
-
-		</td>
-      
- 
-      
+	 
         <td><%= number_with_precision(watcher.temp, :precision => 1)   %>°f</td>
         <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
 	
