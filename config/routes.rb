@@ -25,8 +25,8 @@ ReefSense::Application.routes.draw do
   get "reef_tanks/my_tank"
   get "reef_tanks/setting"
   resources :reef_tanks
- # root :to => "reef_tanks#index"
-  root :to => "demos#home"
+ 
+
 
    authenticated :user do
     #root :to => "reef_tanks#index"
@@ -34,7 +34,7 @@ ReefSense::Application.routes.draw do
    end
 
 
-
+  root :to => "demos#home"
 
   resources :maintainence_logs
 

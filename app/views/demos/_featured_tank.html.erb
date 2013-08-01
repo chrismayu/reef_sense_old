@@ -1,0 +1,204 @@
+<% @watchers = @reef_tank.watchers.order("created_at").paginate(page: params[:page], :per_page => 3) %>
+ <% @current_status = @reef_tank.watchers.order("created_at").first %>
+<div class="page-header">
+  <h4>Featured Tank:</h4><h3> <%= @reef_tank.tank_name %> </h3>
+
+	 <div class="fancy-date">
+		Last Updated:
+		<% if (@current_status != nil) then %>
+			 <%= time_ago_in_words(@current_status.created_at) %>  ago  
+		<% else %>
+		<% end %>	
+	 </div>
+</div>	
+
+
+
+
+
+
+     <!-- Example row of columns -->
+     <div class="row-fluid">
+       <div class="span4">
+         <h2>Temperature:	
+				
+
+					 
+			  </h2>
+         <p>  
+	
+	
+	
+			<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>Temp</td>
+				      <td><% if (@current_status != nil) then %>
+					  <%= @current_status.temp %>
+					<% else %>
+					<% end %>
+
+								</td>
+
+				     </tr>
+					
+					
+						 <tr>
+								<td>Heater</td>
+							      <td>
+							<% if @current_status.heater  == true %>
+										    <span class="label label-success">ON</span>
+											<%else%>	
+											<span class="label label-warning">OFF</span>
+											<%end%>
+
+											</td>
+
+							     </tr>
+
+	  </tbody>
+	</table>
+	
+	</p>
+        
+       </div>
+       <div class="span4">
+         <h2>Pump Status:</h2>
+         <p> 
+			<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>PowerHead</td>
+				      <td><% if @current_status.powerhead  == true %>
+							    <span class="label label-success">ON</span>
+								<%else%>	
+								<span class="label label-warning">OFF</span>
+								<%end%>
+								
+								</td>
+			 
+				     </tr>
+					<tr>
+						<td>Pump</td>
+					      <td><% if @current_status.main_pump  == true %>
+								    <span class="label label-success">ON</span>
+									<%else%>	
+									<span class="label label-warning">OFF</span>
+									<%end%>
+
+									</td>
+					     </tr>
+	    
+	  </tbody>
+	</table>
+	
+	 </p>
+        
+      </div>
+       <div class="span4">
+         <h2>Water Level:</h2>
+         <p>	<table class="table table-striped">
+			  <tbody>
+			    <tr>
+					<td>Water Level</td>
+				      <td><% if @current_status.waterlevelokay == false %>
+							    <span class="label label-success">Okay</span>
+								<%else%>	
+								<span class="label label-warning">Water Level low</span>
+								<%end%>
+
+								</td>
+
+				     </tr>
+					<tr>
+						<td>ATO Pump</td>
+					      <td><% if @current_status.ato_pump  == true %>
+								    <span class="label label-success">ON</span>
+									<%else%>	
+									<span class="label label-warning">OFF</span>
+									<%end%>
+
+									</td>
+					     </tr>
+
+	  </tbody>
+	</table></p>
+     
+       </div>
+     </div>
+<table class="table table-striped">
+	<caption><h5>Recent Received Data:</h5></caption>
+  <thead>
+    <tr> <th>Code:</th>
+      
+      <th>Temp</th>
+ 
+      <th>House Temp</th>
+
+      <th>Powerhead</th>
+      <th>Main Pump</th>
+      <th>Heater</th>
+
+      <th>Received</th>
+  
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @watchers.each do |watcher| %>
+  
+      <tr>
+	  	<td><% for update_code in watcher.update_codes %>
+				<% if watcher.updated_reason == update_code.reef_tank_id %>
+						   <%= update_code.message %>
+
+							<%end%>
+
+		  <% end %>
+
+		</td>
+      
+ 
+      
+        <td><%= number_with_precision(watcher.temp, :precision => 1)   %>°f</td>
+        <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
+	
+        <td>	
+		 <% if watcher.powerhead  == true %>
+				   
+			 <span class="label label-success">ON</span>
+					<%else%>	
+					<span class="label label-warning">OFF</span>
+					<%end%>
+		</td></td>
+		<td>
+
+		 <% if watcher.main_pump  == true %>
+		   	 <span class="label label-success">ON</span>
+				<%else%>	
+				<span class="label label-warning">OFF</span>
+			<%end%>
+</td>
+	<td>
+
+	 <% if watcher.heater  == true %>
+		 <span class="label label-success">ON</span>
+			<%else%>	
+			<span class="label label-warning">OFF</span>
+		<%end%>
+</td>
+		     <td> <%= time_ago_in_words(watcher.created_at) %> ago </td>
+		        
+
+     
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+ <%= will_paginate @watchers %>
+
+        

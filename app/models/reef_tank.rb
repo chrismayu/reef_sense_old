@@ -1,6 +1,6 @@
 class ReefTank < ActiveRecord::Base
   include Tokenable
-  attr_accessible :measurement_type, :send_email_okay, :setup_date, :size, :user_id, :arduino_board_type, :parameter_setup, :reef_tank_arduino_id, :reef_tank_id
+  attr_accessible :measurement_type, :send_email_okay, :tank_name, :setup_date, :size, :user_id, :arduino_board_type, :parameter_setup, :reef_tank_arduino_id, :reef_tank_id
   
   belongs_to :user
   

@@ -7,7 +7,8 @@ class DemosController < ApplicationController
    
    
   def home
-    @demos = Demo.all
+    @demos = Demo.last
+    @reef_tank = ReefTank.where(:id => @demos.feature_user).last 
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,7 @@
 <p>Select User's Tank:</p>
 
 	<%= f.input :feature_user, :label=>"featured user:", :hint=>"User to be Display", :wrapper => :append do %>
-	 <%= f.collection_select(:feature_user, ReefTank.all , :id, :id) %><span class="add-on"><i class="icon-calendar"></i></span>
+	 <%= f.collection_select(:feature_user, ReefTank.all , :id, :tank_name) %><span class="add-on"><i class="icon-calendar"></i></span>
 	<% end %>
 
 

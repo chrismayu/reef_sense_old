@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801130150) do
+ActiveRecord::Schema.define(:version => 20130801132013) do
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130801130150) do
     t.text     "parameter_setup"
     t.string   "reef_tank_arduino_id"
     t.string   "arduino_board_type"
+    t.string   "tank_name"
   end
 
   create_table "roles", :force => true do |t|
