@@ -1,0 +1,9 @@
+<%= simple_form_for @demo, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :feature_user %>
+  <%= f.input :starting_page %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                demos_path, :class => 'btn' %>
+  </div>
+<% end %>

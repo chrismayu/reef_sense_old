@@ -1,4 +1,7 @@
 ReefSense::Application.routes.draw do
+  resources :demos
+
+
   resources :notifications
 
 
@@ -23,7 +26,7 @@ ReefSense::Application.routes.draw do
   get "reef_tanks/setting"
   resources :reef_tanks
  # root :to => "reef_tanks#index"
-  root :to => "reef_tanks#my_tank"
+  root :to => "demos#home"
 
    authenticated :user do
     #root :to => "reef_tanks#index"
