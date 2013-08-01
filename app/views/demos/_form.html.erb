@@ -1,5 +1,14 @@
 <%= simple_form_for @demo, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :feature_user %>
+
+<p>Select User's Tank:</p>
+
+	<%= f.input :feature_user, :label=>"featured user:", :hint=>"User to be Display", :wrapper => :append do %>
+	 <%= f.collection_select(:feature_user, ReefTank.all , :id, :id) %><span class="add-on"><i class="icon-calendar"></i></span>
+	<% end %>
+
+
+
+
   <%= f.input :starting_page %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>

@@ -1,6 +1,11 @@
 class DemosController < ApplicationController
   # GET /demos
   # GET /demos.json
+  
+   
+   before_filter :authenticate_user!, :except => [:home]
+   
+   
   def home
     @demos = Demo.all
 

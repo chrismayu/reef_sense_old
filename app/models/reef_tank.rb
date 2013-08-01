@@ -6,6 +6,7 @@ class ReefTank < ActiveRecord::Base
   
   validates :user_id, presence: true
   
+  has_many :demos
   has_many :todo_lists
   has_many :watchers, :foreign_key => :reef_tank_arduino_id, :primary_key =>  :reef_tank_arduino_id
  # has_many :update_codes, through: :watchers
