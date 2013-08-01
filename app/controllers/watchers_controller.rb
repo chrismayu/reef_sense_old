@@ -23,9 +23,9 @@ class WatchersController < ApplicationController
   
   
   def index
-   @watchers = Watcher.all
+   #@watchers = Watcher.all
      #   @watchers = Watcher.where(:reef_tank_arduino_id => @reef_tank)
-    #@watchers = Watcher.paginate(page: params[:page], :per_page => 20)
+    @watchers = Watcher.paginate(page: params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb

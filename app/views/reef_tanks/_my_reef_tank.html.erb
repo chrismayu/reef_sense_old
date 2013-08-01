@@ -1,0 +1,34 @@
+<%- model_class = ReefTank -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+
+  
+
+<dl class="dl-horizontal">
+  <dt><strong>User:</strong></dt>
+  <dd><%= @reef_tank.user_id %></dd>
+  <dt><strong>setup date:</strong></dt>
+  <dd><%= @reef_tank.setup_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
+  <dd><%= @reef_tank.size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:measurement_type) %>:</strong></dt>
+  <dd><%= @reef_tank.measurement_type %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:send_email_okay) %>:</strong></dt>
+  <dd><%= @reef_tank.send_email_okay %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reef_tank_arduino_id) %>:</strong></dt>
+  <dd><%= @reef_tank.reef_tank_arduino_id %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              root_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_reef_tank_path(@reef_tank), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              reef_tank_path(@reef_tank),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

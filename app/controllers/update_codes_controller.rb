@@ -25,6 +25,8 @@ class UpdateCodesController < ApplicationController
   # GET /update_codes/new.json
   def new
     @update_code = UpdateCode.new
+    @user = current_user.id
+    @reef_tank = ReefTank.where(:user_id => @user).last
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class UpdateCodesController < ApplicationController
   # GET /update_codes/1/edit
   def edit
     @update_code = UpdateCode.find(params[:id])
+    @user = current_user.id
+    @reef_tank = ReefTank.where(:user_id => @user).last
   end
 
   # POST /update_codes

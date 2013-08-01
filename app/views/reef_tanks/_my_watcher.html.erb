@@ -1,40 +1,44 @@
-<%- model_class = Watcher -%>
+<% @watchers = @reef_tank.watchers.order("created_at").paginate(page: params[:page], :per_page => 5) %>
+ 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
+  <h3>Real Time Data History: </h3>
+</div>	
 <table class="table table-striped">
   <thead>
     <tr> <th>Code:</th>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>ID</th>
       <th>Name</th>
  
       <th>House</th>
 
-      <th><%= model_class.human_attribute_name(:powerhead) %></th>
-      <th><%= model_class.human_attribute_name(:main_pump) %></th>
-      <th><%= model_class.human_attribute_name(:heater) %></th>
+      <th>Powerhead</th>
+      <th>Main Pump</th>
+      <th>Heater</th>
 
       <th>Received</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
+
+
   <tbody>
-    
-  	<% @watchers.each do |watcher| %>
+    <% @watchers.each do |watcher| %>
+  
       <tr>
-     	<td><% for update_code in watcher.update_codes %>
+	  	<td><% for update_code in watcher.update_codes %>
 				<% if watcher.updated_reason == update_code.reef_tank_id %>
 						   <%= update_code.message %>
 
 							<%end%>
 
 		  <% end %>
-	
-	</td>
+
+		</td>
+      
         <td><%= link_to watcher.id, watcher_path(watcher) %></td>
-       
+      
         <td><%= number_with_precision(watcher.temp, :precision => 1)   %>°f</td>
-       <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
+        <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
 	
         <td>	
 		 <% if watcher.powerhead  == true %>
@@ -76,7 +80,9 @@
     <% end %>
   </tbody>
 </table>
- <%= will_paginate %>
 
-			<%= debug @arduinos  if Rails.env.development?%>
-			<%= debug(params) if Rails.env.development? %>
+
+
+ <%= will_paginate @watchers %>
+
+        

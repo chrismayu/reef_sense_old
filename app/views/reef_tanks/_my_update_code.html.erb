@@ -1,0 +1,56 @@
+<% @update_codes = @reef_tank.update_codes.paginate(page: params[:page], :per_page => 5) %>
+ 
+<div class="page-header">
+  <h3>Arduino Reason for Update Codes:</h3>
+</div>	
+<table class="table table-striped">
+  <thead>
+    <tr> <th>Code:</th>
+      <th>ID</th>
+      <th>Name</th>
+ 
+      <th>House</th>
+
+      <th>Powerhead</th>
+      <th>Main Pump</th>
+      <th>Heater</th>
+
+      <th>Received</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    
+  <% @update_codes.each do |update_code| %>
+      <tr>
+      	 <td><%= link_to update_code.id, update_code_path(update_code) %></td>
+	        <td><%= update_code.reef_tank_id %></td>
+	        <td><%= update_code.reef_tank_arduino_id %></td>
+	        <td><%= update_code.sent_email %></td>
+	        <td><%= update_code.message %></td>
+	        <td><%= update_code.priority %></td>
+	        <td><%= update_code.display_site_wide %></td>
+                
+
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_update_code_path(update_code), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      update_code_path(update_code),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_update_code_path,
+            :class => 'btn btn-primary' %>
+
+
+ <%= will_paginate @update_codes %>
+ 

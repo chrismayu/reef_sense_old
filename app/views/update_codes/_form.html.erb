@@ -1,6 +1,8 @@
 <%= simple_form_for @update_code, :html => { :class => 'form-horizontal' } do |f| %>
+
+ <%= f.input :reef_tank_arduino_id , :as => :hidden, :input_html => { :value => @reef_tank.reef_tank_arduino_id   } %>
   <%= f.input :reef_tank_id %>
-  <%= f.input :reef_tank_arduino_id %>
+ 
   <%= f.input :sent_email %>
   <%= f.input :message %>
   <%= f.input :priority %>

@@ -5,7 +5,9 @@ class Watcher < ActiveRecord::Base
 
  
        belongs_to :reef_tank, :primary_key => :reef_tank_arduino_id , :foreign_key => :reef_tank_arduino_id
-      serialize :params
+       has_many :update_codes, :foreign_key => :reef_tank_arduino_id, :primary_key =>  :reef_tank_arduino_id
+       
+       serialize :params
       
 
 end

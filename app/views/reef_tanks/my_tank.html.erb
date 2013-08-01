@@ -58,7 +58,8 @@
 	</table>
 	
 	</p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
+         <p><%= link_to t('.View details', :default => t("helpers.links.View details")),
+		              reef_tanks_setting_path, :class => 'btn'  %></p>
        </div>
        <div class="span4">
          <h2>Pump Status</h2>
@@ -91,7 +92,11 @@
 	</table>
 	
 	 </p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
+         <p> 
+	
+		  <%= link_to t('.View details', :default => t("helpers.links.View details")),
+		              reef_tanks_setting_path, :class => 'btn'  %>
+	</p>
       </div>
        <div class="span4">
          <h2>Water Level</h2>
@@ -121,7 +126,8 @@
 
 	  </tbody>
 	</table></p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
+         <p><%= link_to t('.View details', :default => t("helpers.links.View details")),
+		              reef_tanks_setting_path, :class => 'btn'  %></p>
        </div>
      </div>
 
@@ -131,42 +137,4 @@
        <p>&copy; ReefSense 2013</p>
      </div>
 
-
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
-
-
  
- 
- <%= render :partial => 'current_status' , :reef_tank => @reef_tank %>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @reef_tank.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:setup_date) %>:</strong></dt>
-  <dd><%= @reef_tank.setup_date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
-  <dd><%= @reef_tank.size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:measurement_type) %>:</strong></dt>
-  <dd><%= @reef_tank.measurement_type %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:send_email_okay) %>:</strong></dt>
-  <dd><%= @reef_tank.send_email_okay %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:reef_tank_arduino_id) %>:</strong></dt>
-  <dd><%= @reef_tank.reef_tank_arduino_id %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              reef_tanks_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_reef_tank_path(@reef_tank), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              reef_tank_path(@reef_tank),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
-<%= debug @reef_tank if Rails.env.development? %>
-<%= debug @watchers if Rails.env.development? %>
-<%= debug(params) if Rails.env.development? %>

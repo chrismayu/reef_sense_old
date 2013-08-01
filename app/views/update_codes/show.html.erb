@@ -19,8 +19,20 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              update_codes_path, :class => 'btn'  %>
+ 
+
+			<% if user_signed_in? %>
+			     
+			    <% if current_user.has_role? :admin %>
+			      <%= link_to t('.back', :default => t("helpers.links.back")),
+				              update_codes_path, :class => 'btn'  %>
+			    <% end %>
+			  <% else %>
+			    <%= link_to t('.back', :default => t("helpers.links.back")),
+			              reef_tanks_setting_path, :class => 'btn'  %>
+			  <% end %>
+
+
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_update_code_path(@update_code), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

@@ -19,7 +19,24 @@ class ReefTanksController < ApplicationController
     
   end
   
+  def setting
+      @user = current_user.id
+      @reef_tank = ReefTank.where(:user_id => @user).last
+      
+ 
+      
+      
+      
+    #@reef_tank = ReefTank.find(params[:id])
+    # @reef_tank = ReefTank.where(:id => @reef_tank)
+    #@reef_tank = ReefTank.find(params[:id])
   
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @reef_tanks }
+    end
+  end
   
   def index
     @user = current_user.id

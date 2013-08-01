@@ -20,6 +20,7 @@ ReefSense::Application.routes.draw do
   resources :livestock_imports
 
   get "reef_tanks/my_tank"
+  get "reef_tanks/setting"
   resources :reef_tanks
  # root :to => "reef_tanks#index"
   root :to => "reef_tanks#my_tank"
