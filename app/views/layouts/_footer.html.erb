@@ -1,0 +1,22 @@
+
+
+<div id="footer">
+      <div class="container">
+	
+	 
+      <p class="text-muted credit">&copy; ReefSense 2013</p>
+
+	<% if user_signed_in? %>
+	    <% if current_user.has_role? :admin %>
+	      <li>
+	      <%= link_to 'Admin', users_path %>
+	      </li>
+	    <% end %>
+
+	  <% end %>
+
+      </div>
+    </div>
+
+
+ 
