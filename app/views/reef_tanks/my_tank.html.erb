@@ -24,7 +24,7 @@
 			    <tr>
 					<td>Temp</td>
 				      <td><% if (@current_status != nil) then %>
-					  <%= @current_status.temp %>
+					  <%= number_with_precision(@current_status.temp, :precision => 1)   %>°f
 					<% else %>
 					<% end %>
 
