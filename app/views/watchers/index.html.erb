@@ -13,7 +13,8 @@
       <th><%= model_class.human_attribute_name(:powerhead) %></th>
       <th><%= model_class.human_attribute_name(:main_pump) %></th>
       <th><%= model_class.human_attribute_name(:heater) %></th>
-
+<th>ATO Pump</th>
+<th>Water Level</th>
       <th>Received</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -60,6 +61,24 @@
 			<span class="label label-warning">OFF</span>
 		<%end%>
 </td>
+
+	<td>
+
+	 <% if watcher.ato_pump  == true %>
+		 <span class="label label-success">ON</span>
+			<%else%>	
+			<span class="label label-warning">OFF</span>
+		<%end%>
+</td>
+
+ <td><% if watcher.waterlevelokay == false %>
+		    <span class="label label-success">Okay</span>
+			<%else%>	
+			<span class="label label-warning">Water Level low</span>
+			<%end%>
+
+			</td>
+    
 		     <td> <%= time_ago_in_words(watcher.created_at) %> ago </td>
 		        
 
