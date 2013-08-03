@@ -5,65 +5,35 @@
 
 	 <div class="fancy-date">
 		Last Updated:
-		<% if (@current_status != nil) then %>
-			 <%= time_ago_in_words(@current_status.created_at) %>  ago  
-		<% else %>
-		<% end %>	
+		<%= status_last_updated(@current_status)  %>	
 	 </div>
 </div>	
-
-
-
-
 
 
      <!-- Example row of columns -->
      <div class="row-fluid">
        <div class="span4">
-         <h2>Temperature:	
-				
-
-					 
-			  </h2>
+         <h2>Temperature:</h2>
          <p>  
-	
-	
-	
-			<table class="table table-striped">
-			  <tbody>
-			    <tr>
-							<td>Temp</td>
-						      <td>
-
-							<%= status_temp(@current_status)  %>
-
-										</td>
-
-						     </tr>
-							<tr>
-								<td>Last Updated</td>
-							      <td>
-									<%= status_last_updated(@current_status)  %>
-
-
-											</td>
-							     </tr>
-
-								 <tr>
-										<td>Heater</td>
-									      <td>
-								<%= status_heater(@current_status)  %></td>
-
-									     </tr>
-
-	  </tbody>
-	</table>
+	     <table class="table table-striped"> <tbody> <tr> 
+		<td>Temp</td>
+		 <td> <%= status_temp(@current_status) %> </td>
+  
+   </tr> <tr> <td>Last Updated</td> <td> <%= status_last_updated(@current_status) %>
+  
+   </td> </tr>
+  
+   <tr> <td>Heater</td> <td> <%= status_heater(@current_status) %></td>
+  
+   </tr>
+  
+   </tbody> </table>
 	
 	</p>
         
        </div>
        <div class="span4">
-         <h2>Pump Status</h2>
+         <h2>Pump Status:</h2>
          <p> 
 			<table class="table table-striped">
 			  <tbody>
@@ -92,7 +62,7 @@
         
       </div>
        <div class="span4">
-         <h2>Water Level</h2>
+         <h2>Water Level:</h2>
          <p>	<table class="table table-striped">
 			  <tbody>
 			    <tr>
@@ -115,14 +85,15 @@
 	<caption><h5>Recent Received Data:</h5></caption>
   <thead>
     <tr> 
-      <th>Temp</th>
+      <th>Tank Temp</th>
  
       <th>House Temp</th>
 
       <th>Powerhead</th>
       <th>Main Pump</th>
       <th>Heater</th>
-
+       <th>ATO Pump</th>
+      <th>Water Level</th>
       <th>Received</th>
   
     </tr>
@@ -154,7 +125,7 @@
 		 <%= status_waterlevelokay(watcher)  %>
 		 </td>   
 
-			<td> <%= status_last_updated(watcher)  %> </td>
+		<td> <%= status_last_updated(watcher)  %> </td>
 
      
       </tr>
