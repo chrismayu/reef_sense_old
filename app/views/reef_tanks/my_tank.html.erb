@@ -14,7 +14,7 @@
      <!-- Example row of columns -->
      <div class="row-fluid">
        <div class="span4">
-         <h2>Real Time Data</h2>
+         <h2>Temperature</h2>
          <p>  
 	
 	
@@ -23,20 +23,18 @@
 			  <tbody>
 			    <tr>
 					<td>Temp</td>
-				      <td><% if (@current_status != nil) then %>
-					  <%= number_with_precision(@current_status.temp, :precision => 1)   %>°f
-					<% else %>
-					<% end %>
+				      <td>
+					
+					<%= status_temp(@current_status)  %>
 
 								</td>
 
 				     </tr>
 					<tr>
 						<td>Last Updated</td>
-					      <td>	<% if (@current_status != nil) then %>
-								 <%= time_ago_in_words(@current_status.created_at) %>  ago  
-							<% else %>
-							<% end %>
+					      <td>
+							<%= status_last_updated(@current_status)  %>
+						
 
 									</td>
 					     </tr>
@@ -44,13 +42,7 @@
 						 <tr>
 								<td>Heater</td>
 							      <td>
-							<% if @current_status.heater  == true %>
-										    <span class="label label-success">ON</span>
-											<%else%>	
-											<span class="label label-warning">OFF</span>
-											<%end%>
-
-											</td>
+						<%= status_heater(@current_status)  %></td>
 
 							     </tr>
 
@@ -68,25 +60,21 @@
 			  <tbody>
 			    <tr>
 					<td>PowerHead</td>
-				      <td><% if @current_status.powerhead  == true %>
-							    <span class="label label-success">ON</span>
-								<%else%>	
-								<span class="label label-warning">OFF</span>
-								<%end%>
-								
-								</td>
-			 
-				     </tr>
+				  		<td>	
+						<%= status_powerhead(@current_status)  %>
+						</td></tr>
 					<tr>
 						<td>Pump</td>
-					      <td><% if @current_status.main_pump  == true %>
-								    <span class="label label-success">ON</span>
-									<%else%>	
-									<span class="label label-warning">OFF</span>
-									<%end%>
-
-									</td>
+					   		<td>
+						    <%= status_mainpump(@current_status)  %>
+						    </td>
 					     </tr>
+						<tr>
+						<td>Skimmer</td>
+						<td>
+						<%= status_skimmer(@current_status)  %>
+						</td>
+						</tr>
 	    
 	  </tbody>
 	</table>
@@ -104,24 +92,13 @@
 			  <tbody>
 			    <tr>
 					<td>Water Level</td>
-				      <td><% if @current_status.waterlevelokay == false %>
-							    <span class="label label-success">Okay</span>
-								<%else%>	
-								<span class="label label-warning">Water Level low</span>
-								<%end%>
-
-								</td>
-
+				      <td><%= status_waterlevelokay(@current_status)%></td>
 				     </tr>
 					<tr>
 						<td>ATO Pump</td>
-					      <td><% if @current_status.ato_pump  == true %>
-								    <span class="label label-success">ON</span>
-									<%else%>	
-									<span class="label label-warning">OFF</span>
-									<%end%>
-
-									</td>
+					   	<td>
+						 <%= status_atopump(@current_status)  %>
+						 </td>
 					     </tr>
 
 	  </tbody>

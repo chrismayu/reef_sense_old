@@ -1,6 +1,6 @@
 <%- model_class = ReefTank -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1> </h1>
 </div>
 
 
@@ -10,7 +10,7 @@
   <dt><strong>User:</strong></dt>
   <dd><%= @reef_tank.user_id %></dd>
   <dt><strong>setup date:</strong></dt>
-  <dd><%= @reef_tank.setup_date %></dd>
+  <dd><%= time_ago_in_words(@reef_tank.setup_date)%> ago</dd>
   <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
   <dd><%= @reef_tank.size %></dd>
   <dt><strong><%= model_class.human_attribute_name(:measurement_type) %>:</strong></dt>

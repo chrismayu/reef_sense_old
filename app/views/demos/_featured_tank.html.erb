@@ -32,29 +32,29 @@
 			<table class="table table-striped">
 			  <tbody>
 			    <tr>
-					<td>Temp</td>
-				      <td><% if (@current_status != nil) then %>
-					<%= number_with_precision(@current_status.temp, :precision => 1)   %>°f
-					<% else %>
-					<% end %>
+							<td>Temp</td>
+						      <td>
 
-								</td>
+							<%= status_temp(@current_status)  %>
 
-				     </tr>
-					
-					
-						 <tr>
-								<td>Heater</td>
+										</td>
+
+						     </tr>
+							<tr>
+								<td>Last Updated</td>
 							      <td>
-							<% if @current_status.heater  == true %>
-										    <span class="label label-success">ON</span>
-											<%else%>	
-											<span class="label label-warning">OFF</span>
-											<%end%>
+									<%= status_last_updated(@current_status)  %>
+
 
 											</td>
-
 							     </tr>
+
+								 <tr>
+										<td>Heater</td>
+									      <td>
+								<%= status_heater(@current_status)  %></td>
+
+									     </tr>
 
 	  </tbody>
 	</table>
@@ -63,31 +63,27 @@
         
        </div>
        <div class="span4">
-         <h2>Pump Status:</h2>
+         <h2>Pump Status</h2>
          <p> 
 			<table class="table table-striped">
 			  <tbody>
 			    <tr>
 					<td>PowerHead</td>
-				      <td><% if @current_status.powerhead  == true %>
-							    <span class="label label-success">ON</span>
-								<%else%>	
-								<span class="label label-warning">OFF</span>
-								<%end%>
-								
-								</td>
-			 
-				     </tr>
+				  		<td>	
+						<%= status_powerhead(@current_status)  %>
+						</td></tr>
 					<tr>
 						<td>Pump</td>
-					      <td><% if @current_status.main_pump  == true %>
-								    <span class="label label-success">ON</span>
-									<%else%>	
-									<span class="label label-warning">OFF</span>
-									<%end%>
-
-									</td>
+					   		<td>
+						    <%= status_mainpump(@current_status)  %>
+						    </td>
 					     </tr>
+						<tr>
+						<td>Skimmer</td>
+						<td>
+						<%= status_skimmer(@current_status)  %>
+						</td>
+						</tr>
 	    
 	  </tbody>
 	</table>
@@ -96,29 +92,18 @@
         
       </div>
        <div class="span4">
-         <h2>Water Level:</h2>
+         <h2>Water Level</h2>
          <p>	<table class="table table-striped">
 			  <tbody>
 			    <tr>
 					<td>Water Level</td>
-				      <td><% if @current_status.waterlevelokay == false %>
-							    <span class="label label-success">Okay</span>
-								<%else%>	
-								<span class="label label-warning">Water Level low</span>
-								<%end%>
-
-								</td>
-
+				      <td><%= status_waterlevelokay(@current_status)%></td>
 				     </tr>
 					<tr>
 						<td>ATO Pump</td>
-					      <td><% if @current_status.ato_pump  == true %>
-								    <span class="label label-success">ON</span>
-									<%else%>	
-									<span class="label label-warning">OFF</span>
-									<%end%>
-
-									</td>
+					   	<td>
+						 <%= status_atopump(@current_status)  %>
+						 </td>
 					     </tr>
 
 	  </tbody>
@@ -149,35 +134,27 @@
   
       <tr>
 	 
-        <td><%= number_with_precision(watcher.temp, :precision => 1)   %>°f</td>
-        <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
-	
-        <td>	
-		 <% if watcher.powerhead  == true %>
-				   
-			 <span class="label label-success">ON</span>
-					<%else%>	
-					<span class="label label-warning">OFF</span>
-					<%end%>
-		</td></td>
+        <td><%= status_temp(watcher)  %></td>
+	     <td><%= status_ambeint_temp(watcher)  %></td>
+	     <td>	
+		<%= status_powerhead(watcher)  %>
+		</td>
 		<td>
+	    <%= status_mainpump(watcher)  %>
+	    </td>
+		<td>
+		 <%= status_heater(watcher)  %>
+		 </td>
 
-		 <% if watcher.main_pump  == true %>
-		   	 <span class="label label-success">ON</span>
-				<%else%>	
-				<span class="label label-warning">OFF</span>
-			<%end%>
-</td>
-	<td>
+		<td>
+		 <%= status_atopump(watcher)  %>
+		 </td>
 
-	 <% if watcher.heater  == true %>
-		 <span class="label label-success">ON</span>
-			<%else%>	
-			<span class="label label-warning">OFF</span>
-		<%end%>
-</td>
-		     <td> <%= time_ago_in_words(watcher.created_at) %> ago </td>
-		        
+		<td>
+		 <%= status_waterlevelokay(watcher)  %>
+		 </td>   
+
+			<td> <%= status_last_updated(watcher)  %> </td>
 
      
       </tr>

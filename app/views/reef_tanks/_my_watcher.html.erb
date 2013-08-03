@@ -14,8 +14,8 @@
       <th>Powerhead</th>
       <th>Main Pump</th>
       <th>Heater</th>
-	<th>ATO Pump</th>
-	<th>Water Level</th>
+	   <th>ATO Pump</th>
+      <th>Water Level</th>
       <th>Received</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -29,65 +29,35 @@
 	  	<td><% for update_code in watcher.update_codes %>
 				<% if watcher.updated_reason == update_code.reef_tank_id %>
 						   <%= update_code.message %>
-
-							<%end%>
+						<%end%>
 
 		  <% end %>
 
 		</td>
-      
         <td><%= link_to watcher.id, watcher_path(watcher) %></td>
-      
-        <td><%= number_with_precision(watcher.temp, :precision => 1)   %>°f</td>
-        <td><%= number_with_precision(watcher.ambeint_temp, :precision => 1)   %>°f</td>
-	
-        <td>	
-		 <% if watcher.powerhead  == true %>
-				   
-			 <span class="label label-success">ON</span>
-					<%else%>	
-					<span class="label label-warning">OFF</span>
-					<%end%>
-		</td></td>
-		<td>
-
-		 <% if watcher.main_pump  == true %>
-		   	 <span class="label label-success">ON</span>
-				<%else%>	
-				<span class="label label-warning">OFF</span>
-			<%end%>
-</td>
-	<td>
-
-	 <% if watcher.heater  == true %>
-		 <span class="label label-success">ON</span>
-			<%else%>	
-			<span class="label label-warning">OFF</span>
-		<%end%>
-</td>
-		<td>
-
-		 <% if watcher.ato_pump  == true %>
-			 <span class="label label-success">ON</span>
-				<%else%>	
-				<span class="label label-warning">OFF</span>
-			<%end%>
+     <td><%= status_temp(watcher)  %></td>
+     <td><%= status_ambeint_temp(watcher)  %></td>
+     <td>	
+	<%= status_powerhead(watcher)  %>
 	</td>
-
-	 <td><% if watcher.waterlevelokay == false %>
-			    <span class="label label-success">Okay</span>
-				<%else%>	
-				<span class="label label-warning">Water Level low</span>
-				<%end%>
-
-				</td>     
+	<td>
+    <%= status_mainpump(watcher)  %>
+    </td>
+	<td>
+	 <%= status_heater(watcher)  %>
+	 </td>
+	
+	<td>
+	 <%= status_atopump(watcher)  %>
+	 </td>
+ 
+	<td>
+	 <%= status_waterlevelokay(watcher)  %>
+	 </td>   
 		
-		<td> <%= time_ago_in_words(watcher.created_at) %> ago </td>
-		        
+		<td> <%= status_last_updated(watcher)  %> </td>
 
         <td>
-			
-    
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       watcher_path(watcher),
                       :method => :delete,
