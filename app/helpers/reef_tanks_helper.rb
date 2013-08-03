@@ -1,5 +1,24 @@
 module ReefTanksHelper
   
+  def status_alarm_code(watcher)
+
+ if watcher.update_codes  !=nil
+   for update_code in watcher.update_codes  
+  			 if watcher.updated_reason == update_code.reef_tank_id 
+  					   return content_tag(:p, "#{update_code.message}")           
+  		 
+  			 	 else
+           return content_tag(:div, content_tag(:span, "No Code Setup"), class: "label label-default")
+           #return content_tag(:div,   content_tag(:span, link_to('No Code Setup', new_update_code_path ), :class => 'label label-default'))
+            
+			 	 end
+  			 	 
+  		  end  
+        else
+        content_tag(:div, content_tag(:span, "No Data"), class: "label label-default")  
+       end
+  end
+  
   
  
   def status_powerhead(watcher)
@@ -172,6 +191,11 @@ module ReefTanksHelper
       content_tag(:div, content_tag(:span, "No Data"), class: "label label-default")  
      end
   end
+  
+  
+ 
+  
+  
   
    def status_ambeint_temp(watcher)
 
