@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801132013) do
+ActiveRecord::Schema.define(:version => 20130804201541) do
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(:version => 20130801132013) do
     t.string   "equipment_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "galleries", :force => true do |t|
+    t.integer  "reef_tank_id"
+    t.string   "name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "livestock_imports", :force => true do |t|
@@ -71,6 +78,14 @@ ActiveRecord::Schema.define(:version => 20130801132013) do
     t.boolean  "display_site_wide",    :null => false
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "reef_tanks", :force => true do |t|

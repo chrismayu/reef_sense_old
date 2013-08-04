@@ -1,4 +1,10 @@
 ReefSense::Application.routes.draw do
+  resources :pictures
+
+
+  resources :galleries
+
+
   resources :demos
 
 
