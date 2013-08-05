@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>:</b>
-  <%= @picture.gallery_id %>
-</p>
+ 
 
 <p>
   <b>Name:</b>
@@ -11,8 +6,14 @@
 </p>
 
 <p>
+  <b>Reef Tank Id:</b>
+  <%= @picture.reef_tank_id%>
+</p>
+
+ 
+<p>
   <b>Image:</b>
-  <%= @picture.image %>
+  <p><%= image_tag @picture.image_url %></p>
 </p>
 
 

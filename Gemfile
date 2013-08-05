@@ -9,6 +9,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'jquery-fileupload-rails'
   gem 'bootstrap-modal-rails'
+  gem 'jquery-migrate-rails'
 end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
@@ -56,6 +57,7 @@ gem "font-awesome-rails"
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'roo'
+gem 'fog'
 
 group :development, :test do
 

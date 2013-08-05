@@ -124,10 +124,11 @@ module ReefTanksHelper
     if watcher.waterlevelokay !=nil
 
     if watcher.waterlevelokay?     
-     content_tag(:div, content_tag(:span, "Okay"), class: "label label-success")  
+  
+     content_tag(:div, content_tag(:span, "Water Level low"), class: "label label-warning")  
     else
-      
-       content_tag(:div, content_tag(:span, "Water Level low"), class: "label label-warning") 
+       content_tag(:div, content_tag(:span, "Okay"), class: "label label-success") 
+       
     end
     
       else

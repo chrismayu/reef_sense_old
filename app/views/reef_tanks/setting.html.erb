@@ -1,6 +1,14 @@
 
 <%= render :partial => 'my_reef_tank' , :reef_tank => @reef_tank %>
 
+<% @pictures = @reef_tank.pictures.all %>
+<div id="pictures">
+  <%= render @pictures %>
+</div>
+ 
+ 
+
+<%= link_to "Add a Picture", pictures_path(:reef_tank_id => @reef_tank) %>
 
 <%= render :partial => 'my_watcher' , :reef_tank => @reef_tank %>
 

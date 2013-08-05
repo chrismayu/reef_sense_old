@@ -14,6 +14,7 @@ class ReefTank < ActiveRecord::Base
   has_many :maintainence_logs
   has_many :user_equipments
   has_many :notifications
+  has_many :pictures, :foreign_key => :reef_tank_id
   has_many :user_livestocks
  
   

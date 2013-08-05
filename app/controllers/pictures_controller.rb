@@ -2,7 +2,9 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    @pictures = Picture.where(reef_tank_id: params[:reef_tank_id])
+    @uploader = Picture.new.image
+    @uploader.success_action_redirect = new_picture_url
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,8 +26,10 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new
-
+    @picture = Picture.new(key: params[:key])
+    @user = current_user.id
+      @reef_tank = ReefTank.where(:user_id => @user).last
+ 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @picture }
@@ -40,15 +44,14 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(params[:picture])
+    @picture = Picture.create(params[:picture])
+  
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-        format.json { render json: @picture, status: :created, location: @picture }
+        format.html { redirect_to @picture, notice: 'Picture was successfully created.' } 
       else
-        format.html { render action: "new" }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+        format.html { render action: "new" } 
       end
     end
   end

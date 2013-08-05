@@ -1,27 +1,23 @@
-<h1>Listing pictures</h1>
+<h1>Picture Gallery</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div id="pictures">
+  <%= render @pictures %>
+</div>
+<div class="clear"></div>
 
-<% @pictures.each do |picture| %>
-  <tr>
-    <td><%= picture.gallery_id %></td>
-    <td><%= picture.name %></td>
-    <td><%= picture.image %></td>
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= direct_upload_form_for @uploader do |f| %>
+ 
+  <p><%= f.file_field :image %></p>
+ 
+  <p><%= f.submit "Upload Image" %></p>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Picture', new_picture_path %>
+<%= debug @pictures if Rails.env.development? %>
+
+<%= debug @uploader if Rails.env.development? %>
+
+<%= debug :reef_tank_id if Rails.env.development? %>
+<%= debug @reef_tank if Rails.env.development? %>
+
+<%= debug (params) if Rails.env.development? %>

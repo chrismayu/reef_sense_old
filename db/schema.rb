@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804201541) do
+ActiveRecord::Schema.define(:version => 20130805000907) do
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -84,8 +84,10 @@ ActiveRecord::Schema.define(:version => 20130804201541) do
     t.integer  "gallery_id"
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "reef_tank_id"
+    t.boolean  "image_processed"
   end
 
   create_table "reef_tanks", :force => true do |t|
