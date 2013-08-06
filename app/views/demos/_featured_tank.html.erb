@@ -1,5 +1,11 @@
 <% @watchers = @reef_tank.watchers.order("created_at").paginate(page: params[:page], :per_page => 3) %>
  <% @current_status = @reef_tank.watchers.order("created_at").first %>
+
+
+<% @items = @reef_tank.pictures.all %>
+
+ 
+
 <div class="page-header">
   <h4>Featured Tank:</h4><h3> <%= @reef_tank.tank_name %> </h3>
 
@@ -9,6 +15,13 @@
 	 </div>
 </div>	
 
+	 <%= render :partial => 'carousel' , :picture => @items %>
+
+
+
+
+
+<br>
 
      <!-- Example row of columns -->
      <div class="row-fluid">
