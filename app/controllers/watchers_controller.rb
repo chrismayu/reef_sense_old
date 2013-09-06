@@ -15,7 +15,7 @@ class WatchersController < ApplicationController
    
       
      
-      Watcher.create!(:params => params, :temp => params[:m_t], :waterlevelokay => params[:w_l], :skimmer => params[:skim], :updated_reason => params[:h_c], :reef_tank_arduino_id => params[:t_n], :main_light => params[:daylight], :powerhead => params[:ph], :ambeint_temp => params[:a_t], :main_pump => params[:m_p], :ato_pump => params[:ato], :heater => params[:h]
+      Watcher.create!(:params => params, :temp => params[:m_t], :refuge_light => params[:r_l], :waterlevelokay => params[:w_l], :skimmer => params[:skim], :updated_reason => params[:h_c], :reef_tank_arduino_id => params[:t_n], :main_light => params[:daylight], :powerhead => params[:ph], :ambeint_temp => params[:a_t], :main_pump => params[:m_p], :ato_pump => params[:ato], :heater => params[:h]
       )
      render :nothing => true
  

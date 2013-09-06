@@ -83,6 +83,23 @@ module ReefTanksHelper
   end
   
   
+  def status_refuge_light(watcher)
+
+
+    if watcher.refuge_light !=nil
+
+     if watcher.refuge_light?     #home_address == false 
+       content_tag(:div, content_tag(:span, "ON"), class: "label label-success")
+     else
+       content_tag(:div, content_tag(:span, "OFF"), class: "label label-warning")   
+     end
+     
+     
+       else
+       content_tag(:div, content_tag(:span, "No Data"), class: "label label-default")  
+      end
+   end
+  
   def status_atopump(watcher)
 
 
@@ -116,6 +133,8 @@ module ReefTanksHelper
       content_tag(:div, content_tag(:span, "No Data"), class: "label label-default")  
      end
   end
+  
+  
   
   
   def status_waterlevelokay(watcher)

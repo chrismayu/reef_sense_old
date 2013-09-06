@@ -16,8 +16,9 @@
       <th>Heater</th>
 	   <th>ATO Pump</th>
       <th>Water Level</th>
-      <th>Received</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+<th>Refuge Light</th>
+     <th>Received</th>
+      
     </tr>
   </thead>
 
@@ -49,15 +50,14 @@
 	 <%= status_waterlevelokay(watcher)  %>
 	 </td>   
 		
+		refuge_light
+		
+		<td>
+		 <%= status_refuge_light(watcher)  %>
+		 </td>
 		<td> <%= status_last_updated(watcher)  %> </td>
 
-        <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      watcher_path(watcher),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
+       
       </tr>
     <% end %>
   </tbody>
