@@ -15,6 +15,7 @@
       <th>Heater</th>
 <th>ATO Pump</th>
 <th>Water Level</th>
+<th>Refuge Light</th>
       <th>Received</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -53,7 +54,9 @@
 			 </td>
     
 		   	<td> <%= status_last_updated(watcher)  %> </td>
-		        
+		        <td> <%= status_refuge_light(watcher)  %> </td>
+
+
 
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
