@@ -1,5 +1,9 @@
 <% @watchers = @reef_tank.watchers.order("created_at").paginate(page: params[:page], :per_page => 5) %>
+
+<%= debug @watchers if Rails.env.development? %>
+
  
+
 <div class="page-header">
   <h3>Real Time Data History: </h3>
 </div>	
@@ -26,6 +30,8 @@
   <tbody>
     <% @watchers.each do |watcher| %>
   
+ 
+
       <tr>
          <td><%= status_alarm_code(watcher)  %></td>
 		
