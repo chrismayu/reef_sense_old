@@ -27,7 +27,7 @@ ReefSense::Application.routes.draw do
 
 
   resources :livestock_imports
-
+  get "reef_tanks/hourly"
   get "reef_tanks/my_tank"
   get "reef_tanks/setting"
   resources :reef_tanks

@@ -2,7 +2,37 @@ class ReefTanksController < ApplicationController
   # GET /reef_tanks
   # GET /reef_tanks.json
   
-  before_filter :authenticate_user! 
+ #  before_filter :authenticate_user!, :except => [:hourly]
+  
+  
+  def hourly
+   
+    stats  = Watcher.all
+    
+    #stats = Stat.hourly(params[:stat_type])
+    respond_to do |format|
+      format.json do
+        datapoints = []
+        stats.each do |stat|
+          datapoints << {:title => "temp", :value => stat.temp}
+        end
+        datasequences = [
+          {
+            :title => 'Hourly count',
+            :datapoints => datapoints
+          }
+        ]
+        graph = {
+          :title => I18n.t("stat_types.for_#{params[:stat_type]}"),
+          :total => true,
+          :color => "blue",
+          :datasequences => datasequences
+        }
+        render :json => {:graph => graph}
+      end
+    end
+  end
+  
   
   
   def my_tank
