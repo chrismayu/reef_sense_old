@@ -6,16 +6,17 @@
 <table class="table table-striped">
   <thead>
     <tr> <th>Code:</th>
-      <th>ID</th>
-      <th>Name</th>
+      <th>Alarm ID</th>
+      <th>Tank Code</th>
+       
  
-      <th>House</th>
+      <th>Send Email</th>
 
-      <th>Powerhead</th>
-      <th>Main Pump</th>
-      <th>Heater</th>
+      <th>Message</th>
+   
+      <th>Display Site Wide</th>
 
-      <th>Received</th>
+      
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -30,7 +31,7 @@
 	        <td><%= update_code.reef_tank_arduino_id %></td>
 	        <td><%= update_code.sent_email %></td>
 	        <td><%= update_code.message %></td>
-	        <td><%= update_code.priority %></td>
+	   
 	        <td><%= update_code.display_site_wide %></td>
                 
 
@@ -47,10 +48,12 @@
     <% end %>
   </tbody>
 </table>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_update_code_path,
             :class => 'btn btn-primary' %>
 
 
  <%= will_paginate @update_codes %>
- 
+ <br>
+<br>
