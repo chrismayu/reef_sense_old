@@ -34,13 +34,14 @@
 		<td>Temp</td>
 		 <td> <%= status_temp(@current_status) %> </td>
   
-   </tr> <tr> <td>Last Updated</td> <td> <%= status_last_updated(@current_status) %>
-  
-   </td> </tr>
+   </tr> 
   
    <tr> <td>Heater</td> <td> <%= status_heater(@current_status) %></td>
   
    </tr>
+<tr> <td>Last Updated</td> <td> <%= status_last_updated(@current_status) %>
+
+   </td> </tr>
   
    </tbody> </table>
 	
@@ -90,6 +91,13 @@
 						 <%= status_atopump(@current_status)  %>
 						 </td>
 					     </tr>
+					
+							<tr>
+									<td>Refuge Light</td>
+								   	<td>
+										<%= status_refuge_light(@current_status)  %>
+										 </td>
+								     </tr>
 
 	  </tbody>
 	</table></p>
