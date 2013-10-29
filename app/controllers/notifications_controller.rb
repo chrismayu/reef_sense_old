@@ -24,7 +24,9 @@ class NotificationsController < ApplicationController
   # GET /notifications/new
   # GET /notifications/new.json
   def new
-    @notification = Notification.new
+    
+     @reef_tank = ReefTank.where(:id => params[:reef_tank]).last 
+     @notification = Notification.new(reef_tank_id: params[:reef_tank], :reef_tank_arduino_id => @reef_tank.reef_tank_arduino_id )
 
     respond_to do |format|
       format.html # new.html.erb

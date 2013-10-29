@@ -1,0 +1,64 @@
+<% @notifications = @reef_tank.notifications %>
+ 
+<div class="page-header">
+  <h3>Arduino Reason for Update Codes:</h3>
+</div>	
+<table class="table table-striped">
+  <thead>
+    <tr> <th>Code:</th>
+ 
+       
+ 
+      <th>Send Email</th>
+
+ 
+	<th>check_parameter</th>
+	<th>check_item</th>
+ 
+	<th>priority</th>
+      
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    
+  <% @notifications.each do |notification| %>
+      <tr>
+	 
+ 
+	
+      	 <td><%= link_to notification.id, notification_path(notification) %></td>
+	 
+	        <td><%= notification.sent_email %></td>
+	 
+	   
+ 
+                <td><%= notification.check_parameter %></td>
+			 <td><%= notification.check_item %></td>
+	 
+			 <td><%= notification.priority %></td>
+
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_notification_path(notification), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      notification_path(notification),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_notification_path(:reef_tank => @reef_tank.id),
+            :class => 'btn btn-primary' %>
+
+
+ 
+ <br>
+<br>

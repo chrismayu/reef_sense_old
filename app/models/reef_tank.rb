@@ -12,8 +12,9 @@ class ReefTank < ActiveRecord::Base
  # has_many :update_codes, through: :watchers
    has_many :update_codes, :foreign_key => :reef_tank_arduino_id, :primary_key =>  :reef_tank_arduino_id
   has_many :maintainence_logs
-  has_many :user_equipments
-  has_many :notifications
+  has_many :user_equipments 
+  has_many :notifications, :foreign_key => :reef_tank_id, :primary_key =>  :id, :inverse_of => :reef_tank, :dependent => :destroy
+  
   has_many :pictures, :foreign_key => :reef_tank_id
   has_many :user_livestocks
  
