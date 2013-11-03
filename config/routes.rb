@@ -1,4 +1,7 @@
 ReefSense::Application.routes.draw do
+  resources :alarm_histories
+
+
   resources :pictures
 
 

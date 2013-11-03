@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Arduino:</b>
+  <%= @alarm_history.arduino_id %>
+</p>
+
+<p>
+  <b>Parameter:</b>
+  <%= @alarm_history.parameter %>
+</p>
+
+<p>
+  <b>Sign:</b>
+  <%= @alarm_history.sign %>
+</p>
+
+<p>
+  <b>Alarm value:</b>
+  <%= @alarm_history.alarm_value %>
+</p>
+
+<p>
+  <b>Actual value:</b>
+  <%= @alarm_history.actual_value %>
+</p>
+
+<p>
+  <b>Message sent:</b>
+  <%= @alarm_history.message_sent %>
+</p>
+
+<p>
+  <b>Sent to email:</b>
+  <%= @alarm_history.sent_to_email %>
+</p>
+
+<p>
+  <b>Email sent:</b>
+  <%= @alarm_history.email_sent %>
+</p>
+
+
+<%= link_to 'Edit', edit_alarm_history_path(@alarm_history) %> |
+<%= link_to 'Back', alarm_histories_path %>

@@ -1,0 +1,37 @@
+<h1>Listing alarm_histories</h1>
+
+<table>
+  <tr>
+    <th>Arduino</th>
+    <th>Parameter</th>
+    <th>Sign</th>
+    <th>Alarm value</th>
+    <th>Actual value</th>
+    <th>Message sent</th>
+    <th>Sent to email</th>
+    <th>Email sent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @alarm_histories.each do |alarm_history| %>
+  <tr>
+    <td><%= alarm_history.arduino_id %></td>
+    <td><%= alarm_history.parameter %></td>
+    <td><%= alarm_history.sign %></td>
+    <td><%= alarm_history.alarm_value %></td>
+    <td><%= alarm_history.actual_value %></td>
+    <td><%= alarm_history.message_sent %></td>
+    <td><%= alarm_history.sent_to_email %></td>
+    <td><%= alarm_history.email_sent %></td>
+    <td><%= link_to 'Show', alarm_history %></td>
+    <td><%= link_to 'Edit', edit_alarm_history_path(alarm_history) %></td>
+    <td><%= link_to 'Destroy', alarm_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Alarm history', new_alarm_history_path %>

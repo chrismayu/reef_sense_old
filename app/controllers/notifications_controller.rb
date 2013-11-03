@@ -26,6 +26,8 @@ class NotificationsController < ApplicationController
   def new
     
      @reef_tank = ReefTank.where(:id => params[:reef_tank]).last 
+     @list = @reef_tank.watchers.column_names
+ 
      @notification = Notification.new(reef_tank_id: params[:reef_tank], :reef_tank_arduino_id => @reef_tank.reef_tank_arduino_id )
 
     respond_to do |format|

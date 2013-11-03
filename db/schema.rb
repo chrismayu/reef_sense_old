@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029025423) do
+ActiveRecord::Schema.define(:version => 20131030041845) do
+
+  create_table "alarm_histories", :force => true do |t|
+    t.string   "arduino_id"
+    t.string   "parameter"
+    t.string   "sign"
+    t.integer  "alarm_value"
+    t.integer  "actual_value"
+    t.text     "message_sent"
+    t.string   "sent_to_email"
+    t.boolean  "email_sent"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "reef_tank_arduino_id"
+    t.integer  "reef_tank_id"
+  end
 
   create_table "arduinos", :force => true do |t|
     t.integer  "reef_tank_id"
@@ -80,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20131029025423) do
     t.datetime "updated_at",           :null => false
     t.string   "check_item"
     t.integer  "check_parameter"
+    t.string   "sign_type"
   end
 
   create_table "pictures", :force => true do |t|
