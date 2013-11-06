@@ -1,23 +1,15 @@
 <% @notifications = @reef_tank.notifications %>
  
 <div class="page-header">
-  <h3>Arduino Reason for Update Codes:</h3>
+  <h3>Email Temperature Notification Settings:</h3>
 </div>	
 <table class="table table-striped">
   <thead>
-    <tr> <th>Code:</th>
- 
-       
- 
-      <th>Send Email</th>
-
- 
+    <tr> 
+    	<th>Notification #:</th>
+        <th>Value</th>
 	<th>check_parameter</th>
-	<th>check_item</th>
- 
-	<th>priority</th>
-      
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
 
@@ -26,20 +18,9 @@
     
   <% @notifications.each do |notification| %>
       <tr>
-	 
- 
-	
       	 <td><%= link_to notification.id, notification_path(notification) %></td>
-	 
-	        <td><%= notification.sent_email %></td>
-	 
-	   
- 
-                <td><%= notification.check_parameter %></td>
-			 <td><%= notification.check_item %></td>
-	 
-			 <td><%= notification.priority %></td>
-
+	 <td><%= notification.sent_email %></td>
+         <td><%= notification.check_parameter %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_notification_path(notification), :class => 'btn btn-mini' %>
