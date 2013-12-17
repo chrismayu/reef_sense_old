@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class PictureImageUploader < CarrierWave::Uploader::Base
   include CarrierWaveDirect::Uploader
   
   include CarrierWave::RMagick

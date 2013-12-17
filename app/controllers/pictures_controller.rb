@@ -1,6 +1,33 @@
 class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
+  
+  
+  
+  def step_1
+        @picture = ReefTank.find(params[:reef_tank_id])
+        @uploader = Picture.new.picture_image
+        @uploader.success_action_redirect = pictures_step_2_url(:reef_tank_id => params[:reef_tank_id])
+
+   end
+   
+   def step_2
+
+      @picture = Picture.new(key: params[:key], reef_tank_id: params[:reef_tank_id])
+
+     respond_to do |format|
+       if @picture.save
+         
+        format.html { redirect_to reef_tank_path(@picture.reef_tank_id), notice: 'This ministry picture was successfully created.' }
+        
+         else
+           format.html { render action: "step_1" }
+           format.json { render json: @picture.errors, status: :unprocessable_entity }
+         end
+     end
+
+   end
+  
   def index
     @pictures = Picture.where(reef_tank_id: params[:reef_tank_id])
     @uploader = Picture.new.image
@@ -26,9 +53,7 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new(key: params[:key])
-    @user = current_user.id
-      @reef_tank = ReefTank.where(:user_id => @user).last
+    @picture = Picture.new(key: params[:key], :reef_tank_id => params[:reef_tank_id])
  
     respond_to do |format|
       format.html # new.html.erb

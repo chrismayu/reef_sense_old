@@ -1,7 +1,8 @@
 ReefSense::Application.routes.draw do
   resources :alarm_histories
 
-
+  get "pictures/step_1"
+  get "pictures/step_2"
   resources :pictures
 
 
