@@ -40,7 +40,14 @@
 <div id="pictures">
   <% @reef_tank.pictures.each do |picture| %>
     <div class="picture">
-      <%= image_tag picture.image_url.to_s %>
+	    <% if picture.image_processed? %>
+	      <%= link_to image_tag(picture.picture_image_url(:thumb)), picture %>
+	    <% else %>
+	      <em>Processing...</em>
+	    <% end %>
+		
+		
+     
       <div class="name"><%= picture.name %></div>
       <div class="actions">
         <%= link_to "edit", edit_picture_path(picture) %> |
@@ -52,7 +59,4 @@
 
  <%= link_to "Add a Picture", new_picture_path(:reef_tank_id => @reef_tank) %> 
 </div>
-<%= debug @subcomment if Rails.env.development? %>
-<%= debug @reef_tank if Rails.env.development? %>
-<%= debug @watchers if Rails.env.development? %>
-<%= debug(params) if Rails.env.development? %>
+ 

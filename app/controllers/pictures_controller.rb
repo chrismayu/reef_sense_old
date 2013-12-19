@@ -7,8 +7,8 @@ class PicturesController < ApplicationController
   def step_1
         @picture = ReefTank.find(params[:reef_tank_id])
         @uploader = Picture.new.picture_image
-        @uploader.success_action_redirect = pictures_step_2_url(:reef_tank_id => params[:reef_tank_id])
-
+        @uploader.success_action_redirect = new_picture_url(:reef_tank_id => params[:reef_tank_id])
+       
    end
    
    def step_2
@@ -18,7 +18,7 @@ class PicturesController < ApplicationController
      respond_to do |format|
        if @picture.save
          
-        format.html { redirect_to reef_tank_path(@picture.reef_tank_id), notice: 'This ministry picture was successfully created.' }
+        format.html { redirect_to reef_tank_path(@picture.reef_tank_id), notice: 'The picture was successfully created.' }
         
          else
            format.html { render action: "step_1" }

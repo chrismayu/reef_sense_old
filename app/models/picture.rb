@@ -1,11 +1,10 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :reef_tank_id, :picture_image, :name
-   belongs_to :reef_tank
+  attr_accessible :reef_tank_id, :picture_image, :name, :image_processed
    mount_uploader :picture_image, PictureImageUploader
-   
+   belongs_to :reef_tank
   
 
-     after_save :enqueue_image
+     after_create :enqueue_image
 
      def image_name
        File.basename(picture_image.path || picture_image.filename) if picture_image
@@ -17,13 +16,12 @@ class Picture < ActiveRecord::Base
 
       
      
-       def perform(id, key)
-         picture = Picture.find(id)
-         picture.key = key
-         picture.remote_picture_image_url = picture.picture_image.direct_fog_url(with_path: true)
-         picture.save!
-         picture.update_column(:image_processed, true)
-       end
-
+     def perform(id, key)
+             picture = Picture.find(id)
+             picture.key = key
+             picture.remote_picture_image_url = picture.picture_image.direct_fog_url(with_path: true)
+             picture.save!
+             picture.update_column(:image_processed, true)
+           end
       
    end

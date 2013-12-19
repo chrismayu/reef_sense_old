@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @picture %> |
-<%= link_to 'Back', pictures_path %>
+
+<%= link_to 'Back',  reef_tank_path(@picture.reef_tank_id) %>

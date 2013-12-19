@@ -278,6 +278,9 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.1.3)
+      unf_ext
+    unf_ext (0.0.6)
     uuidtools (2.1.4)
     warden (1.2.1)
       rack (>= 1.0)
@@ -336,4 +339,5 @@ DEPENDENCIES
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  unf
   will_paginate (= 3.0.3)

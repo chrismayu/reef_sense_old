@@ -1,6 +1,6 @@
  <div class="picture">
   <% if picture.image_processed? %>
-    <%= link_to image_tag(picture.image_url(:thumb)), picture %>
+    <%= link_to image_tag(picture.picture_image_url(:thumb)), picture %>
   <% else %>
     <em>Processing...</em>
   <% end %>

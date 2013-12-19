@@ -13,9 +13,9 @@
  
 <p>
   <b>Image:</b>
-  <p><%= image_tag @picture.image_url %></p>
+  <p><%= image_tag @picture.picture_image_url  %></p>
 </p>
 
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<%= link_to 'Back',  reef_tank_path(@picture.reef_tank_id) %>
